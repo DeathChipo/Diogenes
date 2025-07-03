@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://bios1o00m404a"]
+
+[ext_resource type="Texture2D" uid="uid://ctnne0yo2hfuh" path="res://assets/pistol0.png" id="1_1e3ry"]
+[ext_resource type="Script" uid="uid://2d5odr7v16u5" path="res://scripts/pistol.gd" id="1_igbvm"]
+[ext_resource type="Texture2D" uid="uid://c544m21wtdw6d" path="res://assets/pistol1.png" id="2_t6oaa"]
+[ext_resource type="PackedScene" uid="uid://bvtrjqibbd00i" path="res://scenes/bullet.tscn" id="4_t6oaa"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1e3ry"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_1e3ry")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_t6oaa")
+}],
+"loop": false,
+"name": &"atk",
+"speed": 5.0
+}]
+
+[node name="Pistol" type="AnimatedSprite2D"]
+scale = Vector2(0.06, 0.06)
+sprite_frames = SubResource("SpriteFrames_1e3ry")
+animation = &"atk"
+script = ExtResource("1_igbvm")
+bullet_scene = ExtResource("4_t6oaa")
+
+[node name="AtkTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
+[connection signal="timeout" from="AtkTimer" to="." method="_on_atk_timer_timeout"]

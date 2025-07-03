@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://dxlg6xsojsec"]
+
+[ext_resource type="Script" uid="uid://d26ivr4iagkuu" path="res://scripts/sword.gd" id="1_n355p"]
+[ext_resource type="Texture2D" uid="uid://dwy3n6317mai1" path="res://assets/tmpweapon3.bmp" id="2_1yp6w"]
+[ext_resource type="Texture2D" uid="uid://clyqsybadp55r" path="res://assets/tmpweapon2.bmp" id="3_fnw8x"]
+[ext_resource type="Texture2D" uid="uid://7oqe2ucmxlg1" path="res://assets/tmpweapon1.bmp" id="4_cp3m4"]
+[ext_resource type="Texture2D" uid="uid://dsy26imj7s05" path="res://assets/tmpweapon0.bmp" id="5_ml5hy"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ycbs3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_cp3m4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_fnw8x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_1yp6w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ml5hy")
+}],
+"loop": false,
+"name": &"atk",
+"speed": 25.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n355p"]
+size = Vector2(45.7463, 28.4631)
+
+[node name="Sword" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_n355p")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.105, 0.105)
+sprite_frames = SubResource("SpriteFrames_ycbs3")
+animation = &"atk"
+frame = 2
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8.58307e-06, 1.00002)
+rotation = -3.14159
+scale = Vector2(1.48646, -5.12945)
+shape = SubResource("RectangleShape2D_n355p")
+
+[node name="AtkTimer" type="Timer" parent="."]
+wait_time = 0.2
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="timeout" from="AtkTimer" to="." method="_on_atk_timer_timeout"]

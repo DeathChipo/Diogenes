@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://dbcj4qlmgg0vo"]
+
+[ext_resource type="Script" uid="uid://bh0mw6yhr451e" path="res://scripts/hittable.gd" id="1_1btkc"]
+[ext_resource type="Texture2D" uid="uid://7oqe2ucmxlg1" path="res://assets/tmpweapon1.bmp" id="2_7au10"]
+[ext_resource type="Texture2D" uid="uid://pjulr70ml6p8" path="res://assets/background.JPG" id="2_501ro"]
+[ext_resource type="Texture2D" uid="uid://dsy26imj7s05" path="res://assets/tmpweapon0.bmp" id="4_mg8as"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7au10"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7au10")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_501ro")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_mg8as")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7au10"]
+
+[node name="trashcan" type="Area2D" groups=["hittable"]]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_1btkc")
+hp = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.045, 0.045)
+sprite_frames = SubResource("SpriteFrames_7au10")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(5.075, 5.075)
+shape = SubResource("RectangleShape2D_7au10")
