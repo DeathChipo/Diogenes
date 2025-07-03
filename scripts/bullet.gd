@@ -4,11 +4,11 @@ var angle = 0
 var speed = 0
 var damage = 0
 
-func _on_area_entered(area: Node2D) -> void:
-	print("touche")
-	if (area.alive):
-		queue_free()
-	area.hit(damage)
+func _on_body_entered(body: Node2D) -> void:
+	if body.is_in_group("hittable"):
+		if (body.alive):
+			queue_free()
+		body.hit(damage)
 
 func _process(delta: float) -> void:
 	if speed == 0:

@@ -8,10 +8,11 @@ var can_atk = true
 
 func _ready() -> void:
 	$CollisionShape2D.disabled = true
-	hide()
+	hide()	
 
-func _on_area_entered(area: Node2D) -> void:
-	area.hit(damage)
+func _on_body_entered(body: Node2D) -> void:
+	if body.is_in_group("hittable"):
+		body.hit(damage)
 
 func _process(delta: float) -> void:
 	if !get_parent().get_parent().attacking:

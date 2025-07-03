@@ -1,6 +1,6 @@
-extends Area2D
+extends CharacterBody2D
 
-var speed = 500
+var speed = 200
 var attacking = false
 
 func controls() -> Vector2:
@@ -17,11 +17,12 @@ func controls() -> Vector2:
 		direction = direction.normalized() * speed
 	return direction
 
-func _process(delta) -> void:
+func _physics_process(delta) -> void:
 	var direction = Vector2.ZERO
 	#if !attacking:
 	direction = controls()
-	position += direction * delta
+	velocity = direction * delta * speed
+	move_and_slide()
 
 #func _on_sword_atk_signal() -> void:
 	#pass

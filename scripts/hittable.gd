@@ -1,4 +1,4 @@
-extends Area2D
+extends CharacterBody2D
 
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 @export var sprite: PackedScene
