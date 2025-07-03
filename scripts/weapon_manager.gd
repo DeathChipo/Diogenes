@@ -1,11 +1,16 @@
 extends Node2D
 
-var equiped_weapon = 0
-var weapon_obj = 0
+var range_weapon = 0
+var melee_weapon = 0
 
 func _ready() -> void:
-	equiped_weapon = $Pistol
+	melee_weapon = $Sword
+	range_weapon = $Pistol
 
 func _process(delta: float) -> void:
-	if (Input.is_action_just_pressed("attack")):
-		equiped_weapon.atk()
+	if (get_parent().attacking):
+		return
+	if (Input.is_action_just_pressed("melee_atk")):
+		melee_weapon.atk()
+	if (Input.is_action_just_pressed("range_atk")):
+		range_weapon.atk()

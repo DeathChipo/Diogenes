@@ -1,10 +1,11 @@
 extends Area2D
 
 signal atk_signal
-const WEAPON_DISTANCE = 150.0
+const WEAPON_DISTANCE = 20.0
 var screen_size = Vector2(1280, 720)
 @export var damage: int = 1
 var can_atk = true
+var type = "sword"
 
 func _ready() -> void:
 	$CollisionShape2D.disabled = true

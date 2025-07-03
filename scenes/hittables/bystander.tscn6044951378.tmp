@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=3 uid="uid://b55058c5ed4xr"]
+
+[ext_resource type="Script" uid="uid://b1y3ugl1eqfh2" path="res://scripts/bystander.gd" id="1_811ny"]
+[ext_resource type="Texture2D" uid="uid://tvu45iwfe6y7" path="res://assets/city_kenedy/Tiles/tile_0265.png" id="2_5r7w8"]
+[ext_resource type="Texture2D" uid="uid://ubgp5uq0q5ap" path="res://assets/city_kenedy/Tiles/tile_0267.png" id="3_5r7w8"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7ba6n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_5r7w8")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_5r7w8")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_saq7v"]
+size = Vector2(50, 66)
+
+[node name="bystander" type="CharacterBody2D" groups=["hittable"]]
+collision_layer = 2
+collision_mask = 8
+script = ExtResource("1_811ny")
+cell_size = null
+speed = null
+hp = null
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_7ba6n")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_saq7v")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true
+
+[node name="Path" type="Line2D" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,12 +1,13 @@
 extends AnimatedSprite2D
 
 signal atk_signal
-const WEAPON_DISTANCE = 150.0
+const WEAPON_DISTANCE = 20.0
 var screen_size = Vector2(1280, 720)
 @export var damage: int = 1
 @export var bullet_scene: PackedScene
 var can_atk = true
 @export var bullet_speed = 1000
+var type = "pistol"
 
 func _ready() -> void:
 	hide()
