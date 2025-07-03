@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://b55058c5ed4xr"]
+
+[ext_resource type="Script" uid="uid://b1y3ugl1eqfh2" path="res://scripts/bystander.gd" id="1_811ny"]
+[ext_resource type="Texture2D" uid="uid://cbxx41eony0ua" path="res://assets/hd-plastic-water-bottle-png-704081694866681qerl21csnz.png" id="2_7ba6n"]
+[ext_resource type="Texture2D" uid="uid://bdxmfepndlgqh" path="res://assets/bystander.jpg" id="2_hprwy"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7ba6n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7ba6n")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_hprwy")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_saq7v"]
+size = Vector2(148, 133)
+
+[node name="bystander" type="CharacterBody2D" groups=["hittable"]]
+collision_layer = 2
+collision_mask = 8
+script = ExtResource("1_811ny")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.495, 0.495)
+sprite_frames = SubResource("SpriteFrames_7ba6n")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_saq7v")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 15.0
+path_postprocessing = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -29,7 +29,7 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7au10"]
 
-[node name="trashcan" type="Area2D" groups=["hittable"]]
+[node name="trashcan" type="CharacterBody2D" groups=["hittable"]]
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_1btkc")

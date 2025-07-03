@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://ctnne0yo2hfuh" path="res://assets/pistol0.png" id="1_1e3ry"]
 [ext_resource type="Script" uid="uid://2d5odr7v16u5" path="res://scripts/pistol.gd" id="1_igbvm"]
 [ext_resource type="Texture2D" uid="uid://c544m21wtdw6d" path="res://assets/pistol1.png" id="2_t6oaa"]
-[ext_resource type="PackedScene" uid="uid://bvtrjqibbd00i" path="res://scenes/bullet.tscn" id="4_t6oaa"]
+[ext_resource type="PackedScene" uid="uid://bvtrjqibbd00i" path="res://scenes/weapons/bullet.tscn" id="4_t6oaa"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1e3ry"]
 animations = [{
