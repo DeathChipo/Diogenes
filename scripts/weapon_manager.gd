@@ -4,8 +4,8 @@ var range_weapon = 0
 var melee_weapon = 0
 
 func _ready() -> void:
-	melee_weapon = $Sword
-	range_weapon = $Pistol
+	melee_weapon = $Bat
+	range_weapon = $Rifle
 
 func _process(delta: float) -> void:
 	if (get_parent().attacking):

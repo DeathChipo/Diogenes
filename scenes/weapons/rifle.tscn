@@ -1,0 +1,59 @@
+[gd_scene load_steps=10 format=3 uid="uid://dbgvdexw3ynve"]
+
+[ext_resource type="Script" uid="uid://chu1sp3jcepf" path="res://scripts/rifle.gd" id="1_6kub0"]
+[ext_resource type="Texture2D" uid="uid://m7wd6ty8wpdk" path="res://assets/weapons/rifle/rifle.png" id="1_hkhc6"]
+[ext_resource type="Texture2D" uid="uid://c4shpiq4bqbw7" path="res://assets/weapons/rifle/explosion1.png" id="3_s04ql"]
+[ext_resource type="PackedScene" uid="uid://bvtrjqibbd00i" path="res://scenes/weapons/bullet.tscn" id="3_yjk07"]
+[ext_resource type="Texture2D" uid="uid://i7bmkt3ytipd" path="res://assets/weapons/rifle/explosion2.png" id="4_yjk07"]
+[ext_resource type="Texture2D" uid="uid://b17nq1i07jjqa" path="res://assets/weapons/rifle/explosion3.png" id="5_k631g"]
+[ext_resource type="Texture2D" uid="uid://c02gsbnf5i0dw" path="res://assets/weapons/rifle/explosion4.png" id="6_qn60d"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sg1yr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_hkhc6")
+}],
+"loop": false,
+"name": &"atk",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hkhc6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_s04ql")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_yjk07")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_k631g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_qn60d")
+}],
+"loop": false,
+"name": &"shot",
+"speed": 20.0
+}]
+
+[node name="Rifle" type="AnimatedSprite2D"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_sg1yr")
+animation = &"atk"
+script = ExtResource("1_6kub0")
+bullet_scene = ExtResource("3_yjk07")
+
+[node name="GunShot" type="AnimatedSprite2D" parent="."]
+position = Vector2(10, 0)
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_hkhc6")
+animation = &"shot"
+
+[node name="AtkTimer" type="Timer" parent="."]
+wait_time = 0.05
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
+[connection signal="timeout" from="AtkTimer" to="." method="_on_atk_timer_timeout"]

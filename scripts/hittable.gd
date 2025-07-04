@@ -19,16 +19,11 @@ var test = false
 
 
 func _ready():
-	#var tex_size = $AnimatedSprite2D.texture.get_size() * $AnimatedSprite2D.scale
-	#var shape = RectangleShape2D.new()
-	#shape.size = tex_size
-	#collision_shape.shape = shape
 	$AnimatedSprite2D.animation = "idle"
 	$AnimatedSprite2D.play()
 	ftimer = get_node("/root/Main/freeze_timer")
 	last_hit = get_node("/root/Main").last_hit
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if test:
 		print("I TAKE KB")

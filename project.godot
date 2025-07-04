@@ -24,6 +24,7 @@ window/size/resizable=false
 [global_group]
 
 hittable=""
+walls=""
 
 [input]
 

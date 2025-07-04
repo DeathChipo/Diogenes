@@ -1,13 +1,12 @@
 extends AnimatedSprite2D
 
 signal atk_signal
-const WEAPON_DISTANCE = 20.0
+const WEAPON_DISTANCE = 10.0
 var screen_size = Vector2(1280, 720)
 @export var damage: int = 1
 @export var bullet_scene: PackedScene
 var can_atk = true
-@export var bullet_speed = 1000
-var type = "pistol"
+@export var bullet_speed = 4000
 
 func _ready() -> void:
 	hide()
@@ -23,8 +22,10 @@ func _process(delta: float) -> void:
 		rotation = vec.angle()
 		if vec.angle() <= -2  || vec.angle() >= 2:
 			flip_v = true
+			$GunShot.flip_v = true
 		else:
 			flip_v = false
+			$GunShot.flip_v = false
 
 func atk():
 	if !can_atk:
@@ -35,6 +36,7 @@ func atk():
 	play()
 	can_atk = false
 	$AtkTimer.start()
+	$GunShot.play()
 	var bullet = bullet_scene.instantiate()
 	bullet.get_stats(rotation, bullet_speed, damage, get_parent().get_parent().position + position)
 	get_node("/root/Main/Player/WeaponManager/Bullets").add_child(bullet)

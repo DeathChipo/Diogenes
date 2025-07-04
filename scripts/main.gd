@@ -1,8 +1,8 @@
-extends Node
+extends Node2D
 
-var screen_size = Vector2(1280, 720)
 var freeze = false
 var last_hit = false
+var screen_size = Vector2i(1280, 720)
 @export var max_offset_distance: float = 100.0
 
 func get_camera_pos() -> Vector2:

@@ -1,30 +1,56 @@
-[gd_scene load_steps=6 format=3 uid="uid://bios1o00m404a"]
+[gd_scene load_steps=10 format=3 uid="uid://bios1o00m404a"]
 
-[ext_resource type="Texture2D" uid="uid://ctnne0yo2hfuh" path="res://assets/pistol0.png" id="1_1e3ry"]
+[ext_resource type="Texture2D" uid="uid://uun702x4qffp" path="res://assets/weapons/pistol/pistol.png" id="1_60a84"]
 [ext_resource type="Script" uid="uid://2d5odr7v16u5" path="res://scripts/pistol.gd" id="1_igbvm"]
-[ext_resource type="Texture2D" uid="uid://c544m21wtdw6d" path="res://assets/pistol1.png" id="2_t6oaa"]
+[ext_resource type="Texture2D" uid="uid://brugtthlg2vns" path="res://assets/weapons/pistol/explosion1.png" id="4_red3f"]
 [ext_resource type="PackedScene" uid="uid://bvtrjqibbd00i" path="res://scenes/weapons/bullet.tscn" id="4_t6oaa"]
+[ext_resource type="Texture2D" uid="uid://cp453ykleynf8" path="res://assets/weapons/pistol/explosion2.png" id="5_c5u5x"]
+[ext_resource type="Texture2D" uid="uid://cohkk0huaeyrc" path="res://assets/weapons/pistol/explosion3.png" id="6_nb08m"]
+[ext_resource type="Texture2D" uid="uid://b2fvcpcrxogq" path="res://assets/weapons/pistol/explosion4.png" id="7_5sf3v"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1e3ry"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_1e3ry")
-}, {
-"duration": 1.0,
-"texture": ExtResource("2_t6oaa")
+"texture": ExtResource("1_60a84")
 }],
 "loop": false,
 "name": &"atk",
 "speed": 5.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_60a84"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_red3f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_c5u5x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_nb08m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_5sf3v")
+}],
+"loop": false,
+"name": &"shot",
+"speed": 20.0
+}]
+
 [node name="Pistol" type="AnimatedSprite2D"]
-scale = Vector2(0.01, 0.01)
+texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_1e3ry")
 animation = &"atk"
 script = ExtResource("1_igbvm")
 bullet_scene = ExtResource("4_t6oaa")
+
+[node name="GunShot" type="AnimatedSprite2D" parent="."]
+position = Vector2(12, 0)
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_60a84")
+animation = &"shot"
 
 [node name="AtkTimer" type="Timer" parent="."]
 wait_time = 0.5

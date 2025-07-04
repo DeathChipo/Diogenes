@@ -1,48 +1,74 @@
-[gd_scene load_steps=8 format=3 uid="uid://b1qirx5k5tv3l"]
+[gd_scene load_steps=13 format=3 uid="uid://b1qirx5k5tv3l"]
 
 [ext_resource type="Script" uid="uid://vpb6ti70tkim" path="res://scripts/player.gd" id="1_g2els"]
+[ext_resource type="Texture2D" uid="uid://bwpio2tkxgk2v" path="res://assets/chara/player/player1.png" id="2_qlg0r"]
+[ext_resource type="Texture2D" uid="uid://bj8d2grmx0de" path="res://assets/chara/player/player2.png" id="3_fjrip"]
 [ext_resource type="Script" uid="uid://ddvjs73sentnh" path="res://scripts/weapon_manager.gd" id="3_qhqgy"]
 [ext_resource type="PackedScene" uid="uid://dxlg6xsojsec" path="res://scenes/weapons/sword.tscn" id="4_dqkch"]
+[ext_resource type="Texture2D" uid="uid://c687falo0nr4s" path="res://assets/chara/player/player3.png" id="4_smehm"]
 [ext_resource type="PackedScene" uid="uid://bios1o00m404a" path="res://scenes/weapons/pistol.tscn" id="5_qlg0r"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dqkch"]
-load_path = "res://.godot/imported/tile_0051.png-4cefab670fa2c343774396980cfbae08.ctex"
+[ext_resource type="PackedScene" uid="uid://jyrbd77wm23x" path="res://scenes/weapons/bat.tscn" id="7_ur7pv"]
+[ext_resource type="PackedScene" uid="uid://rhopnuoykjbx" path="res://scenes/weapons/pipe.tscn" id="8_smehm"]
+[ext_resource type="PackedScene" uid="uid://dbgvdexw3ynve" path="res://scenes/weapons/rifle.tscn" id="10_y4r1p"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_onrkg"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("CompressedTexture2D_dqkch")
+"texture": ExtResource("2_qlg0r")
 }],
 "loop": true,
 "name": &"idle",
 "speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"interact",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_fjrip")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_smehm")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4flbx"]
-size = Vector2(12, 16)
+size = Vector2(12, 14)
 
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(4, 4)
-collision_mask = 9
+collision_mask = 8
 script = ExtResource("1_g2els")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_onrkg")
-animation = &"idle"
+animation = &"walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_4flbx")
 
 [node name="WeaponManager" type="Node2D" parent="."]
 script = ExtResource("3_qhqgy")
+
+[node name="Pipe" parent="WeaponManager" instance=ExtResource("8_smehm")]
+
+[node name="Bat" parent="WeaponManager" instance=ExtResource("7_ur7pv")]
 
 [node name="Sword" parent="WeaponManager" instance=ExtResource("4_dqkch")]
 visible = false
 
 [node name="Pistol" parent="WeaponManager" instance=ExtResource("5_qlg0r")]
 visible = false
+
+[node name="Rifle" parent="WeaponManager" instance=ExtResource("10_y4r1p")]
 
 [node name="Bullets" type="Node" parent="WeaponManager"]
