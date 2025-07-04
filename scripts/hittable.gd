@@ -33,35 +33,36 @@ func _process(delta: float) -> void:
 		move_and_slide()
 
 func hit(dmg: int):
-	print("aie")
-	if (dmg >= minimum_damages):
-		get_node("/root/Main").freeze = true
-	#	move_direction = Vector2(1, 0)
-	#	kb_timer = get_node("/root/Main/kb_timer")
-	#	kb_timer.wait_time = 0.4
-	#	kb_timer.one_shot = true
-	#	kb_timer.connect("timeout", Callable(self, "_on_Timer_timeout"))
-	#	kb_timer.start()
-		#test = true
-		get_node("/root/Main/pause_timer").wait_time = 0.1
-		get_node("/root/Main/pause_timer").one_shot = true
-		get_node("/root/Main/pause_timer").start()
-		get_node("/root/Main/Camera").start_shake(0.5, 0.5, 1)
-		get_node("/root/Main/freeze_timer").wait_time = 0.1
-		get_node("/root/Main/freeze_timer").one_shot = true
-		get_node("/root/Main/freeze_timer").start()
-		hp -= dmg
-	else :
-		print("too weak")
-	if (hp <= 0):
-		$AnimatedSprite2D.animation = "death"
-		get_node("/root/Main").freeze = true
-		get_node("/root/Main/Camera").start_shake(1.5, 1.5, 3)
-		if !last_hit:
-			get_node("/root/Main/freeze_timer").wait_time = 0.2
+	if alive:
+		if (dmg >= minimum_damages):
+			get_node("/root/Main").freeze = true
+		#	move_direction = Vector2(1, 0)
+		#	kb_timer = get_node("/root/Main/kb_timer")
+		#	kb_timer.wait_time = 0.4
+		#	kb_timer.one_shot = true
+		#	kb_timer.connect("timeout", Callable(self, "_on_Timer_timeout"))
+		#	kb_timer.start()
+			#test = true
+			get_node("/root/Main/pause_timer").wait_time = 0.1
+			get_node("/root/Main/pause_timer").one_shot = true
+			get_node("/root/Main/pause_timer").start()
+			get_node("/root/Main/Camera").start_shake(0.5, 0.5, 1)
+			get_node("/root/Main/freeze_timer").wait_time = 0.1
 			get_node("/root/Main/freeze_timer").one_shot = true
 			get_node("/root/Main/freeze_timer").start()
-		alive = false
+			hp -= dmg
+		else :
+			print("too weak")
+		if (hp <= 0):
+			$AnimatedSprite2D.animation = "death"
+			get_node("/root/Main").freeze = true
+			get_node("/root/Main/Camera").start_shake(1.5, 1.5, 3)
+			get_node("/root/Main/Score").add_assault(name.substr(0, 3))
+			if !last_hit:
+				get_node("/root/Main/freeze_timer").wait_time = 0.2
+				get_node("/root/Main/freeze_timer").one_shot = true
+				get_node("/root/Main/freeze_timer").start()
+			alive = false
 		
 func _on_Timer_timeout():
 	print("KB FIN")

@@ -24,7 +24,6 @@ func pause_animations(node: Node = null):
 		node = get_tree().root
 	for child in node.get_children():
 		if child is AnimatedSprite2D:
-			print("je pause des anime la")
 			child.pause()
 		else:
 			pause_animations(child)
@@ -34,7 +33,6 @@ func unpause_animations(node: Node = null):
 		node = get_tree().root
 	for child in node.get_children():
 		if child is AnimatedSprite2D:
-			print("je unpause des anime la")
 			child.play()
 		else:
 			unpause_animations(child)

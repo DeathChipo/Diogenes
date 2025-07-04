@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bnaroih2fxyxc"
+path="res://.godot/imported/transi2.mp3-ff5c832af6801bda611caf4690bd32a3.mp3str"
+
+[deps]
+
+source_file="res://sound/music/pre cut/transi2.mp3"
+dest_files=["res://.godot/imported/transi2.mp3-ff5c832af6801bda611caf4690bd32a3.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
