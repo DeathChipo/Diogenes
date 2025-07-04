@@ -1,4 +1,4 @@
-[gd_scene load_steps=99 format=4 uid="uid://cn7sdlh8ij3je"]
+[gd_scene load_steps=103 format=4 uid="uid://cn7sdlh8ij3je"]
 
 [ext_resource type="PackedScene" uid="uid://b1qirx5k5tv3l" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://dkwtmkyr58yu8" path="res://scripts/main.gd" id="1_sugp2"]
@@ -60,8 +60,12 @@
 [ext_resource type="AudioStream" uid="uid://dvlawonlkckla" path="res://sound/music/Intro.mp3" id="58_1uevf"]
 [ext_resource type="AudioStream" uid="uid://b5pli62q4fuxo" path="res://sound/sfx/Hit1.wav" id="58_kf5aa"]
 [ext_resource type="AudioStream" uid="uid://u1id114kinb1" path="res://sound/sfx/Hit2.wav" id="59_t5ykj"]
+[ext_resource type="AudioStream" uid="uid://kjh4prdxb40i" path="res://sound/sfx/Damage1.wav" id="60_r4e17"]
 [ext_resource type="AudioStream" uid="uid://cegl3voaufow" path="res://sound/music/pre cut/transi1.mp3" id="61_ro3en"]
+[ext_resource type="AudioStream" uid="uid://bw1kpvx6hvofn" path="res://sound/sfx/Button1.wav" id="61_y57op"]
+[ext_resource type="AudioStream" uid="uid://r5bgv713x5bn" path="res://sound/sfx/Button2.wav" id="62_mlv25"]
 [ext_resource type="AudioStream" uid="uid://bnaroih2fxyxc" path="res://sound/music/pre cut/transi2.mp3" id="62_od4ux"]
+[ext_resource type="AudioStream" uid="uid://ie1oi1ygstmp" path="res://sound/sfx/Button3.wav" id="63_a82wo"]
 [ext_resource type="AudioStream" uid="uid://bxlr0jgy0f3jp" path="res://sound/music/pre cut/transi3.mp3" id="63_xhfw6"]
 [ext_resource type="Script" uid="uid://m30pnyi5q13k" path="res://scripts/score.gd" id="64_od4ux"]
 
@@ -3032,6 +3036,18 @@ stream = ExtResource("58_kf5aa")
 
 [node name="Hit2" type="AudioStreamPlayer" parent="SoundManager/sfx"]
 stream = ExtResource("59_t5ykj")
+
+[node name="Damage1" type="AudioStreamPlayer" parent="SoundManager/sfx"]
+stream = ExtResource("60_r4e17")
+
+[node name="Button1" type="AudioStreamPlayer" parent="SoundManager/sfx"]
+stream = ExtResource("61_y57op")
+
+[node name="Button2" type="AudioStreamPlayer" parent="SoundManager/sfx"]
+stream = ExtResource("62_mlv25")
+
+[node name="Button3" type="AudioStreamPlayer" parent="SoundManager/sfx"]
+stream = ExtResource("63_a82wo")
 
 [node name="Intro" type="AudioStreamPlayer" parent="SoundManager"]
 stream = ExtResource("58_1uevf")
