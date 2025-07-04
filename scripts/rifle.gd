@@ -40,6 +40,7 @@ func atk():
 	var bullet = bullet_scene.instantiate()
 	bullet.get_stats(rotation, bullet_speed, damage, get_parent().get_parent().position + position)
 	get_node("/root/Main/Player/WeaponManager/Bullets").add_child(bullet)
+	get_node("/root/Main/SoundManager/sfx/MkShoot1").play()
 
 func _on_animation_finished() -> void:
 	stop()

@@ -4,7 +4,7 @@ var range_weapon = 0
 var melee_weapon = 0
 
 func _ready() -> void:
-	melee_weapon = $Bat
+	melee_weapon = $Pipe
 	range_weapon = $Rifle
 
 func _process(delta: float) -> void:

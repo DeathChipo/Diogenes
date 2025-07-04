@@ -1,4 +1,4 @@
-[gd_scene load_steps=98 format=4 uid="uid://cn7sdlh8ij3je"]
+[gd_scene load_steps=95 format=4 uid="uid://cn7sdlh8ij3je"]
 
 [ext_resource type="PackedScene" uid="uid://b1qirx5k5tv3l" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://dkwtmkyr58yu8" path="res://scripts/main.gd" id="1_sugp2"]
@@ -60,9 +60,6 @@
 [ext_resource type="AudioStream" uid="uid://dvlawonlkckla" path="res://sound/music/Intro.mp3" id="58_1uevf"]
 [ext_resource type="AudioStream" uid="uid://b5pli62q4fuxo" path="res://sound/sfx/Hit1.wav" id="58_kf5aa"]
 [ext_resource type="AudioStream" uid="uid://u1id114kinb1" path="res://sound/sfx/Hit2.wav" id="59_t5ykj"]
-[ext_resource type="AudioStream" uid="uid://cegl3voaufow" path="res://sound/music/pre cut/transi1.mp3" id="61_ro3en"]
-[ext_resource type="AudioStream" uid="uid://bnaroih2fxyxc" path="res://sound/music/pre cut/transi2.mp3" id="62_od4ux"]
-[ext_resource type="AudioStream" uid="uid://bxlr0jgy0f3jp" path="res://sound/music/pre cut/transi3.mp3" id="63_xhfw6"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_5q0nq"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
@@ -2958,19 +2955,15 @@ stream = ExtResource("35_ksmap")
 
 [node name="HitFail1" type="AudioStreamPlayer" parent="SoundManager/sfx"]
 stream = ExtResource("36_ygd8o")
-volume_db = -9.369
 
 [node name="HitFail2" type="AudioStreamPlayer" parent="SoundManager/sfx"]
 stream = ExtResource("37_2s0kr")
-volume_db = -8.432
 
 [node name="HitFail3" type="AudioStreamPlayer" parent="SoundManager/sfx"]
 stream = ExtResource("38_xaipn")
-volume_db = -9.369
 
 [node name="HitFail4" type="AudioStreamPlayer" parent="SoundManager/sfx"]
 stream = ExtResource("39_ndrjj")
-volume_db = -10.557
 
 [node name="MkShoot1" type="AudioStreamPlayer" parent="SoundManager/sfx"]
 stream = ExtResource("40_ih3m7")
@@ -3034,17 +3027,6 @@ stream = ExtResource("59_t5ykj")
 
 [node name="Intro" type="AudioStreamPlayer" parent="SoundManager"]
 stream = ExtResource("58_1uevf")
-
-[node name="PreCut" type="Node2D" parent="SoundManager"]
-
-[node name="transi1" type="AudioStreamPlayer" parent="SoundManager/PreCut"]
-stream = ExtResource("61_ro3en")
-
-[node name="transi2" type="AudioStreamPlayer" parent="SoundManager/PreCut"]
-stream = ExtResource("62_od4ux")
-
-[node name="transi3" type="AudioStreamPlayer" parent="SoundManager/PreCut"]
-stream = ExtResource("63_xhfw6")
 
 [connection signal="timeout" from="freeze_timer" to="." method="_on_freeze_timer_timeout"]
 [connection signal="timeout" from="pause_timer" to="." method="_on_pause_timer_timeout"]

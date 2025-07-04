@@ -41,6 +41,11 @@ func _ready():
 	[$Loop5/Loop5Raw, $Loop5/Loop5transi, $Loop5/Loop5Raw],
 			]
 
+func randSound(str, nb):
+	var r = randi() % nb + 1
+	get_node("/root/Main/SoundManager/sfx/" + str + str(r)).play()
+		
+
 func play_sound(sound):
 	if (sound.playing == false):
 		AudioServer.set_bus_volume_db(0, volume)	
@@ -62,7 +67,7 @@ func	music_setup():
 		time_begin = Time.get_ticks_usec()
 		time_delay = AudioServer.get_time_to_next_mix() + AudioServer.get_output_latency()
 		play_all_music()
-		loop[0][0].volume_db = 0.0
+		loop[0][0].volume_db = 10.0
 		sec_loop_vol = false
 		intro_listen = false
 		bar = 1
@@ -112,7 +117,7 @@ func transition():
 		
 	if transi_cut == true && bar == transi_bar && beat == 3:
 		loop[level][0].volume_db = -80.0
-		loop[level][1].volume_db = 0.0
+		loop[level][1].volume_db = 10.0
 		transi_cut = false
 		transi_reprise = true
 	var tmp = transi_bar + 1
@@ -120,7 +125,7 @@ func transition():
 		tmp = 1
 	if transi_reprise == true && bar == tmp:
 		loop[level][1].volume_db = -80.0
-		loop[level][2].volume_db = 0.0
+		loop[level][2].volume_db = 10.0
 		level += 1
 		if level == 5:
 			level = 4
@@ -132,7 +137,7 @@ func loop_transi():
 	if (bar_counter % 16 == 1 && loop_reset == true):
 		stop_all_music()
 		play_all_music()
-		loop[level][0].volume_db = 0.0
+		loop[level][0].volume_db = 10.0
 		loop_reset = false
 		print("testtttttttt")
 	elif loop_reset	== false && bar_counter % 16 == 10:

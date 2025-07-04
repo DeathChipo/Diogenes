@@ -13,6 +13,7 @@ func _ready() -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("hittable"):
 		body.hit(damage)
+		get_node("/root/Main/SoundManager").randSound("SwordHit", 3)
 
 func _process(delta: float) -> void:
 	if !get_parent().get_parent().attacking:
@@ -33,6 +34,7 @@ func atk():
 	$AnimatedSprite2D.play()
 	can_atk = false
 	$AtkTimer.start()
+	get_node("/root/Main/SoundManager").randSound("HitFail", 4)
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	$AnimatedSprite2D.stop()

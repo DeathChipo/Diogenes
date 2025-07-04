@@ -7,10 +7,15 @@ var speed_fix = 0
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("hittable"):
+		get_node("/root/Main/SoundManager").randSound("Hit", 2)
+		
 		if (body.alive):
 			queue_free()
 		body.hit(damage)
 	if body.is_in_group("walls"):
+		var r = randi() % 5
+		get_node("/root/Main/SoundManager").randSound("ShootFail", 5)
+				
 		queue_free()
 
 func _process(delta: float) -> void:
@@ -23,6 +28,7 @@ func _process(delta: float) -> void:
 		speed -= speed_fix / 1000
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	get_node("/root/Main/SoundManager").randSound("ShootFail", 5)
 	queue_free()
 
 func get_stats(ang, spe, dam, pos) -> void:
