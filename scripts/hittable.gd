@@ -16,6 +16,7 @@ var kb_timer: Timer
 var alive = true
 var test = false
 
+@export var status: String = ""
 
 func _ready():
 	$AnimatedSprite2D.animation = "idle"
@@ -36,6 +37,7 @@ func hit(dmg: int):
 	if alive:
 		if (dmg >= minimum_damages):
 			get_node("/root/Main").freeze = true
+			get_node("/root/Main").pause_animations()
 		#	move_direction = Vector2(1, 0)
 		#	kb_timer = get_node("/root/Main/kb_timer")
 		#	kb_timer.wait_time = 0.4
@@ -43,20 +45,25 @@ func hit(dmg: int):
 		#	kb_timer.connect("timeout", Callable(self, "_on_Timer_timeout"))
 		#	kb_timer.start()
 			#test = true
-			get_node("/root/Main/pause_timer").wait_time = 0.1
-			get_node("/root/Main/pause_timer").one_shot = true
-			get_node("/root/Main/pause_timer").start()
-			get_node("/root/Main/Camera").start_shake(0.5, 0.5, 1)
+			#get_node("/root/Main/pause_timer").wait_time = 0.1
+			#get_node("/root/Main/pause_timer").one_shot = true
+			#get_node("/root/Main/pause_timer").start()
+			get_node("/root/Main/Camera").start_shake(4, 15, 4)
 			get_node("/root/Main/freeze_timer").wait_time = 0.1
 			get_node("/root/Main/freeze_timer").one_shot = true
 			get_node("/root/Main/freeze_timer").start()
 			hp -= dmg
+			get_node("/root/Main/Player").check_witnesses()
 		else :
 			print("too weak")
 		if (hp <= 0):
+			if !get_node("/root/Main").first_blood:
+				get_node("/root/Main").first_blood = true
+				get_node("/root/Main/SoundManager").intro()
 			$AnimatedSprite2D.animation = "death"
+			$AnimatedSprite2D.play()
 			get_node("/root/Main").freeze = true
-			get_node("/root/Main/Camera").start_shake(1.5, 1.5, 3)
+			get_node("/root/Main/Camera").start_shake(7, 10, 10)
 			get_node("/root/Main/Score").add_assault(name.substr(0, 3))
 			if !last_hit:
 				get_node("/root/Main/freeze_timer").wait_time = 0.2

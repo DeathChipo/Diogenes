@@ -3,6 +3,9 @@ extends CharacterBody2D
 
 var speed = 200
 var attacking = false
+var max_hp = 1000
+var hp = max_hp
+var alive = true
 
 func _ready():
 	$AnimatedSprite2D.animation = "idle"
@@ -24,6 +27,12 @@ func controls() -> Vector2:
 	return direction
 
 func _physics_process(delta) -> void:
+	if hp <= 0:
+		get_node("/root/Main").freeze = true
+		get_node("/root/Main").pause_animations()
+		get_node("/root/Main/Camera/HUD").show_game_over()
+	if get_node("/root/Main").menu:
+		return 
 	var direction = Vector2.ZERO
 	#if !attacking:
 	direction = controls()
@@ -37,5 +46,11 @@ func _physics_process(delta) -> void:
 	velocity = direction * delta * speed
 	move_and_slide()
 
-#func _on_sword_atk_signal() -> void:
-	#pass
+func hit(dmg):
+	print("OUCH")
+	hp -= dmg
+
+func check_witnesses():
+	for body in $WitnessArea.get_overlapping_bodies():
+		if body.is_in_group("hittable") && body.status == "passive":
+			body.witness()

@@ -1,21 +1,24 @@
-[gd_scene load_steps=104 format=4 uid="uid://cn7sdlh8ij3je"]
+[gd_scene load_steps=107 format=4 uid="uid://cn7sdlh8ij3je"]
 
 [ext_resource type="PackedScene" uid="uid://b1qirx5k5tv3l" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://dkwtmkyr58yu8" path="res://scripts/main.gd" id="1_sugp2"]
-[ext_resource type="Texture2D" uid="uid://xnmyor037ldc" path="res://scripts/assets/tiles/tilemap.png" id="2_tefeu"]
-[ext_resource type="Texture2D" uid="uid://dtpbxkcmp7swk" path="res://scripts/assets/tiles/42.png" id="3_o6xl0"]
+[ext_resource type="Texture2D" uid="uid://xnmyor037ldc" path="res://assets/tiles/tilemap.png" id="2_tefeu"]
+[ext_resource type="Texture2D" uid="uid://dtpbxkcmp7swk" path="res://assets/tiles/42.png" id="3_o6xl0"]
 [ext_resource type="Script" uid="uid://cy2djd6xstj2q" path="res://scripts/camera.gd" id="4_jyhfs"]
-[ext_resource type="Texture2D" uid="uid://do5xtfwskutde" path="res://scripts/assets/tiles/beer.png" id="4_tipki"]
-[ext_resource type="Texture2D" uid="uid://4jwgi4xn1n26" path="res://scripts/assets/tiles/police.png" id="5_85g3d"]
+[ext_resource type="Texture2D" uid="uid://do5xtfwskutde" path="res://assets/tiles/beer.png" id="4_tipki"]
+[ext_resource type="Texture2D" uid="uid://4jwgi4xn1n26" path="res://assets/tiles/police.png" id="5_85g3d"]
 [ext_resource type="PackedScene" uid="uid://6ogq6q3581cs" path="res://scenes/hittables/trashcan.tscn" id="5_tbgi4"]
-[ext_resource type="Texture2D" uid="uid://c4xqvkpwf4xdf" path="res://scripts/assets/tiles/pillar.png" id="6_choun"]
-[ext_resource type="Texture2D" uid="uid://bmesgevx6rws0" path="res://scripts/assets/tiles/bank.png" id="7_ya4ey"]
+[ext_resource type="Texture2D" uid="uid://c4xqvkpwf4xdf" path="res://assets/tiles/pillar.png" id="6_choun"]
+[ext_resource type="Texture2D" uid="uid://bmesgevx6rws0" path="res://assets/tiles/bank.png" id="7_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://diwi0ribi804m" path="res://scenes/hittables/trash.tscn" id="11_eb6dy"]
 [ext_resource type="PackedScene" uid="uid://bywf3ai7abn2n" path="res://scenes/hittables/trashcan_2.tscn" id="12_eb6dy"]
 [ext_resource type="PackedScene" uid="uid://bnh5xmuy0trkf" path="res://scenes/hittables/cone.tscn" id="12_trceg"]
 [ext_resource type="PackedScene" uid="uid://bad0dfntvh6ja" path="res://scenes/hittables/sewer.tscn" id="13_a8y0u"]
 [ext_resource type="PackedScene" uid="uid://dnd5xd55eju2m" path="res://scenes/hittables/npc/bystander.tscn" id="14_jkv2x"]
+[ext_resource type="PackedScene" uid="uid://cxxjs8wesqsqn" path="res://scenes/hud.tscn" id="15_152kg"]
 [ext_resource type="Script" uid="uid://dlenq6a35neni" path="res://scripts/sound_manager.gd" id="16_augu2"]
+[ext_resource type="PackedScene" uid="uid://d4d45smujh745" path="res://scenes/hittables/npc/cop.tscn" id="16_xhfw6"]
+[ext_resource type="PackedScene" uid="uid://b1155ju0klbjp" path="res://scenes/hittables/npc/military.tscn" id="17_1epgm"]
 [ext_resource type="AudioStream" uid="uid://ibgdv0l6gycb" path="res://sound/music/level1/level1_raw.mp3" id="17_tm6hj"]
 [ext_resource type="AudioStream" uid="uid://cqqsw5vklgfg0" path="res://sound/music/level1/level1_transi.mp3" id="18_kf5aa"]
 [ext_resource type="AudioStream" uid="uid://d2xvmsw5df3dw" path="res://sound/music/level2/level2_raw.mp3" id="19_t5ykj"]
@@ -69,6 +72,8 @@
 [ext_resource type="AudioStream" uid="uid://bxlr0jgy0f3jp" path="res://sound/music/pre cut/transi3.mp3" id="63_xhfw6"]
 [ext_resource type="AudioStream" uid="uid://cfsksgjv00ojf" path="res://sound/sfx/StreetSoundscape.mp3" id="64_mlv25"]
 [ext_resource type="Script" uid="uid://m30pnyi5q13k" path="res://scripts/score.gd" id="64_od4ux"]
+[ext_resource type="PackedScene" uid="uid://brd1mdodmmpxp" path="res://scenes/hittables/car.tscn" id="68_r4e17"]
+[ext_resource type="Script" uid="uid://ldx16osirf7r" path="res://scenes/spawn_area.gd" id="68_y57op"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_5q0nq"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
@@ -2825,6 +2830,15 @@ texture = ExtResource("6_choun")
 sources/0 = SubResource("TileSetAtlasSource_tipki")
 sources/1 = SubResource("TileSetAtlasSource_jbj1t")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r4e17"]
+size = Vector2(775, 2486.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y57op"]
+size = Vector2(2532, 954)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mlv25"]
+size = Vector2(3975, 367.5)
+
 [node name="Main" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_sugp2")
@@ -2853,37 +2867,521 @@ tile_set = SubResource("TileSet_85g3d")
 
 [node name="Player" parent="." instance=ExtResource("1_o5qli")]
 y_sort_enabled = true
-position = Vector2(7576, 3219)
+position = Vector2(391, 3276)
 
 [node name="Hittables" type="Node" parent="."]
 
-[node name="trashcan2" parent="Hittables" instance=ExtResource("12_eb6dy")]
-position = Vector2(7477, 3447)
-
-[node name="trashcan3" parent="Hittables" instance=ExtResource("5_tbgi4")]
-position = Vector2(8229, 3137)
-
 [node name="Trash" parent="Hittables" instance=ExtResource("11_eb6dy")]
-position = Vector2(7608, 3455)
+position = Vector2(622, 3237)
+
+[node name="Trash2" parent="Hittables" instance=ExtResource("11_eb6dy")]
+position = Vector2(680, 3261)
+
+[node name="trashcan" parent="Hittables" instance=ExtResource("5_tbgi4")]
+position = Vector2(617, 3317)
+
+[node name="trashcan_2" parent="Hittables" instance=ExtResource("12_eb6dy")]
+position = Vector2(660, 3303)
+
+[node name="Trash3" parent="Hittables" instance=ExtResource("11_eb6dy")]
+position = Vector2(716, 3314)
 
 [node name="Cone" parent="Hittables" instance=ExtResource("12_trceg")]
-position = Vector2(7796, 3364)
+position = Vector2(855, 3179)
 
 [node name="Sewer" parent="Hittables" instance=ExtResource("13_a8y0u")]
-position = Vector2(7848, 3500)
+position = Vector2(1042, 3319)
+
+[node name="Trash4" parent="Hittables" instance=ExtResource("11_eb6dy")]
+position = Vector2(573, 3264)
+
+[node name="trashcan_3" parent="Hittables" instance=ExtResource("12_eb6dy")]
+position = Vector2(305, 3311)
+
+[node name="trashcan2" parent="Hittables" instance=ExtResource("5_tbgi4")]
+position = Vector2(354, 3211)
+
+[node name="trashcan3" parent="Hittables" instance=ExtResource("5_tbgi4")]
+position = Vector2(491, 3220)
+
+[node name="trashcan4" parent="Hittables" instance=ExtResource("5_tbgi4")]
+position = Vector2(1637, 2709)
+
+[node name="trashcan5" parent="Hittables" instance=ExtResource("5_tbgi4")]
+position = Vector2(1672, 2710)
+
+[node name="Sewer2" parent="Hittables" instance=ExtResource("13_a8y0u")]
+position = Vector2(1320, 3382)
+
+[node name="Sewer3" parent="Hittables" instance=ExtResource("13_a8y0u")]
+position = Vector2(2126, 2710)
+
+[node name="Trash5" parent="Hittables" instance=ExtResource("11_eb6dy")]
+position = Vector2(2565, 2696)
+
+[node name="Cone2" parent="Hittables" instance=ExtResource("12_trceg")]
+position = Vector2(1119, 2771)
+
+[node name="trashcan6" parent="Hittables" instance=ExtResource("5_tbgi4")]
+position = Vector2(1935, 3509)
+
+[node name="Car" parent="Hittables" instance=ExtResource("68_r4e17")]
+position = Vector2(1484, 3337)
+
+[node name="Trash6" parent="Hittables" instance=ExtResource("11_eb6dy")]
+position = Vector2(875, 2992)
+
+[node name="Trash7" parent="Hittables" instance=ExtResource("11_eb6dy")]
+position = Vector2(919, 2978)
+
+[node name="Trash8" parent="Hittables" instance=ExtResource("11_eb6dy")]
+position = Vector2(868, 3040)
+
+[node name="Car2" parent="Hittables" instance=ExtResource("68_r4e17")]
+position = Vector2(5753, 3080)
+
+[node name="Car3" parent="Hittables" instance=ExtResource("68_r4e17")]
+position = Vector2(4921, 1872)
+
+[node name="Car4" parent="Hittables" instance=ExtResource("68_r4e17")]
+position = Vector2(5243, 824)
+
+[node name="Car5" parent="Hittables" instance=ExtResource("68_r4e17")]
+position = Vector2(1442, 1856)
+
+[node name="trashcan7" parent="Hittables" instance=ExtResource("5_tbgi4")]
+position = Vector2(1383, 1739)
+
+[node name="Car6" parent="Hittables" instance=ExtResource("68_r4e17")]
+position = Vector2(3489, 849)
+
+[node name="Cone3" parent="Hittables" instance=ExtResource("12_trceg")]
+position = Vector2(5989, 2652)
+
+[node name="Cone4" parent="Hittables" instance=ExtResource("12_trceg")]
+position = Vector2(6055, 2652)
+
+[node name="Cone5" parent="Hittables" instance=ExtResource("12_trceg")]
+position = Vector2(6126, 2652)
+
+[node name="Cone6" parent="Hittables" instance=ExtResource("12_trceg")]
+position = Vector2(6204, 2655)
+
+[node name="Cone7" parent="Hittables" instance=ExtResource("12_trceg")]
+position = Vector2(6272, 2653)
+
+[node name="Cone8" parent="Hittables" instance=ExtResource("12_trceg")]
+position = Vector2(6341, 2657)
+
+[node name="trashcan8" parent="Hittables" instance=ExtResource("5_tbgi4")]
+position = Vector2(2040, 1760)
+
+[node name="trashcan9" parent="Hittables" instance=ExtResource("5_tbgi4")]
+position = Vector2(2094, 1755)
+
+[node name="trashcan10" parent="Hittables" instance=ExtResource("5_tbgi4")]
+position = Vector2(2689, 725)
+
+[node name="Trash9" parent="Hittables" instance=ExtResource("11_eb6dy")]
+position = Vector2(2800, 652)
+
+[node name="Trash10" parent="Hittables" instance=ExtResource("11_eb6dy")]
+position = Vector2(2836, 665)
+
+[node name="trashcan11" parent="Hittables" instance=ExtResource("5_tbgi4")]
+position = Vector2(6467, 997)
+
+[node name="Cone9" parent="Hittables" instance=ExtResource("12_trceg")]
+position = Vector2(6460, 1039)
+
+[node name="trashcan12" parent="Hittables" instance=ExtResource("5_tbgi4")]
+position = Vector2(7871, 2069)
+
+[node name="trashcan13" parent="Hittables" instance=ExtResource("5_tbgi4")]
+position = Vector2(7875, 2102)
+
+[node name="trashcan14" parent="Hittables" instance=ExtResource("5_tbgi4")]
+position = Vector2(7871, 2133)
+
+[node name="Trash11" parent="Hittables" instance=ExtResource("11_eb6dy")]
+position = Vector2(6851, 3635)
+
+[node name="Sewer4" parent="Hittables" instance=ExtResource("13_a8y0u")]
+position = Vector2(6807, 3638)
+
+[node name="Sewer5" parent="Hittables" instance=ExtResource("13_a8y0u")]
+position = Vector2(6081, 3568)
+
+[node name="trashcan15" parent="Hittables" instance=ExtResource("5_tbgi4")]
+position = Vector2(6125, 3568)
+
+[node name="trashcan_4" parent="Hittables" instance=ExtResource("12_eb6dy")]
+position = Vector2(1580, 3572)
+
+[node name="trashcan_5" parent="Hittables" instance=ExtResource("12_eb6dy")]
+position = Vector2(2655, 2599)
+
+[node name="trashcan_6" parent="Hittables" instance=ExtResource("12_eb6dy")]
+position = Vector2(2652, 2634)
+
+[node name="Trash12" parent="Hittables" instance=ExtResource("11_eb6dy")]
+position = Vector2(1534, 3577)
+
+[node name="trashcan_7" parent="Hittables" instance=ExtResource("12_eb6dy")]
+position = Vector2(4508, 2851)
+
+[node name="trashcan16" parent="Hittables" instance=ExtResource("5_tbgi4")]
+position = Vector2(4546, 2851)
+
+[node name="trashcan_8" parent="Hittables" instance=ExtResource("12_eb6dy")]
+position = Vector2(746, 3176)
+
+[node name="trashcan_9" parent="Hittables" instance=ExtResource("12_eb6dy")]
+position = Vector2(3434, 662)
+
+[node name="Cone10" parent="Hittables" instance=ExtResource("12_trceg")]
+position = Vector2(3880, 665)
+
+[node name="Sewer6" parent="Hittables" instance=ExtResource("13_a8y0u")]
+position = Vector2(6178, 669)
+
+[node name="trashcan_10" parent="Hittables" instance=ExtResource("12_eb6dy")]
+position = Vector2(6221, 669)
+
+[node name="Trash13" parent="Hittables" instance=ExtResource("11_eb6dy")]
+position = Vector2(6277, 663)
+
+[node name="Sewer7" parent="Hittables" instance=ExtResource("13_a8y0u")]
+position = Vector2(7746, 1365)
+
+[node name="Cone11" parent="Hittables" instance=ExtResource("12_trceg")]
+position = Vector2(7862, 1434)
+
+[node name="Cone12" parent="Hittables" instance=ExtResource("12_trceg")]
+position = Vector2(7825, 1436)
+
+[node name="trashcan17" parent="Hittables" instance=ExtResource("5_tbgi4")]
+position = Vector2(8132, 1687)
+
+[node name="trashcan_11" parent="Hittables" instance=ExtResource("12_eb6dy")]
+position = Vector2(8134, 1719)
+
+[node name="Trash14" parent="Hittables" instance=ExtResource("11_eb6dy")]
+position = Vector2(7990, 1682)
+
+[node name="Sewer8" parent="Hittables" instance=ExtResource("13_a8y0u")]
+position = Vector2(7993, 2449)
+
+[node name="trashcan18" parent="Hittables" instance=ExtResource("5_tbgi4")]
+position = Vector2(7989, 2486)
+
+[node name="trashcan_12" parent="Hittables" instance=ExtResource("12_eb6dy")]
+position = Vector2(7952, 2449)
+
+[node name="Sewer9" parent="Hittables" instance=ExtResource("13_a8y0u")]
+position = Vector2(7782, 3632)
+
+[node name="Sewer10" parent="Hittables" instance=ExtResource("13_a8y0u")]
+position = Vector2(7821, 3632)
+
+[node name="Trash15" parent="Hittables" instance=ExtResource("11_eb6dy")]
+position = Vector2(7991, 3638)
+
+[node name="Trash16" parent="Hittables" instance=ExtResource("11_eb6dy")]
+position = Vector2(7147, 3573)
+
+[node name="trashcan_13" parent="Hittables" instance=ExtResource("12_eb6dy")]
+position = Vector2(7190, 3572)
+
+[node name="Sewer11" parent="Hittables" instance=ExtResource("13_a8y0u")]
+position = Vector2(6556, 3599)
+
+[node name="Cone13" parent="Hittables" instance=ExtResource("12_trceg")]
+position = Vector2(6562, 3640)
+
+[node name="Sewer12" parent="Hittables" instance=ExtResource("13_a8y0u")]
+position = Vector2(3937, 3570)
+
+[node name="Sewer13" parent="Hittables" instance=ExtResource("13_a8y0u")]
+position = Vector2(4837, 3575)
+
+[node name="Cone14" parent="Hittables" instance=ExtResource("12_trceg")]
+position = Vector2(4877, 3577)
 
 [node name="Camera" type="Camera2D" parent="."]
-position = Vector2(2890, 5000)
+position = Vector2(2948, 5160)
 limit_left = -100
 limit_top = 200
 limit_right = 8850
 limit_bottom = 4000
 script = ExtResource("4_jyhfs")
 
+[node name="HUD" parent="Camera" instance=ExtResource("15_152kg")]
+
 [node name="NPCs" type="Node" parent="."]
 
 [node name="Bystander" parent="NPCs" node_paths=PackedStringArray("target") instance=ExtResource("14_jkv2x")]
-position = Vector2(7509, 2974)
+position = Vector2(2005, 2742)
+target = NodePath("../../Player")
+
+[node name="Bystander2" parent="NPCs" node_paths=PackedStringArray("target") instance=ExtResource("14_jkv2x")]
+position = Vector2(2404, 2944)
+target = NodePath("../../Player")
+
+[node name="Bystander3" parent="NPCs" node_paths=PackedStringArray("target") instance=ExtResource("14_jkv2x")]
+position = Vector2(1108, 2464)
+target = NodePath("../../Player")
+
+[node name="Bystander4" parent="NPCs" node_paths=PackedStringArray("target") instance=ExtResource("14_jkv2x")]
+position = Vector2(1596, 2275)
+target = NodePath("../../Player")
+
+[node name="Bystander5" parent="NPCs" node_paths=PackedStringArray("target") instance=ExtResource("14_jkv2x")]
+position = Vector2(2665, 2788)
+target = NodePath("../../Player")
+
+[node name="Bystander6" parent="NPCs" node_paths=PackedStringArray("target") instance=ExtResource("14_jkv2x")]
+position = Vector2(2720, 2471)
+target = NodePath("../../Player")
+
+[node name="Bystander7" parent="NPCs" node_paths=PackedStringArray("target") instance=ExtResource("14_jkv2x")]
+position = Vector2(4583, 3093)
+target = NodePath("../../Player")
+
+[node name="Bystander8" parent="NPCs" node_paths=PackedStringArray("target") instance=ExtResource("14_jkv2x")]
+position = Vector2(4587, 2997)
+target = NodePath("../../Player")
+
+[node name="Bystander9" parent="NPCs" node_paths=PackedStringArray("target") instance=ExtResource("14_jkv2x")]
+position = Vector2(4733, 3089)
+target = NodePath("../../Player")
+
+[node name="Bystander10" parent="NPCs" node_paths=PackedStringArray("target") instance=ExtResource("14_jkv2x")]
+position = Vector2(4161, 2997)
+target = NodePath("../../Player")
+
+[node name="Bystander11" parent="NPCs" node_paths=PackedStringArray("target") instance=ExtResource("14_jkv2x")]
+position = Vector2(5533, 2020)
+target = NodePath("../../Player")
+
+[node name="Bystander12" parent="NPCs" node_paths=PackedStringArray("target") instance=ExtResource("14_jkv2x")]
+position = Vector2(4596, 753)
+target = NodePath("../../Player")
+
+[node name="Bystander13" parent="NPCs" node_paths=PackedStringArray("target") instance=ExtResource("14_jkv2x")]
+position = Vector2(3706, 675)
+target = NodePath("../../Player")
+
+[node name="Bystander14" parent="NPCs" node_paths=PackedStringArray("target") instance=ExtResource("14_jkv2x")]
+position = Vector2(3037, 1015)
+target = NodePath("../../Player")
+
+[node name="Bystander15" parent="NPCs" node_paths=PackedStringArray("target") instance=ExtResource("14_jkv2x")]
+position = Vector2(2411, 2754)
+target = NodePath("../../Player")
+
+[node name="Bystander16" parent="NPCs" node_paths=PackedStringArray("target") instance=ExtResource("14_jkv2x")]
+position = Vector2(6701, 3088)
+target = NodePath("../../Player")
+
+[node name="Bystander17" parent="NPCs" node_paths=PackedStringArray("target") instance=ExtResource("14_jkv2x")]
+position = Vector2(6413, 2528)
+target = NodePath("../../Player")
+
+[node name="Bystander18" parent="NPCs" node_paths=PackedStringArray("target") instance=ExtResource("14_jkv2x")]
+position = Vector2(6346, 1897)
+target = NodePath("../../Player")
+
+[node name="Bystander19" parent="NPCs" node_paths=PackedStringArray("target") instance=ExtResource("14_jkv2x")]
+position = Vector2(6559, 1914)
+target = NodePath("../../Player")
+
+[node name="Bystander20" parent="NPCs" node_paths=PackedStringArray("target") instance=ExtResource("14_jkv2x")]
+position = Vector2(6204, 1881)
+target = NodePath("../../Player")
+
+[node name="Bystander21" parent="NPCs" node_paths=PackedStringArray("target") instance=ExtResource("14_jkv2x")]
+position = Vector2(6137, 912)
+target = NodePath("../../Player")
+
+[node name="Bystander22" parent="NPCs" node_paths=PackedStringArray("target") instance=ExtResource("14_jkv2x")]
+position = Vector2(6041, 1045)
+target = NodePath("../../Player")
+
+[node name="Bystander23" parent="NPCs" node_paths=PackedStringArray("target") instance=ExtResource("14_jkv2x")]
+position = Vector2(5945, 916)
+target = NodePath("../../Player")
+
+[node name="Bystander24" parent="NPCs" node_paths=PackedStringArray("target") instance=ExtResource("14_jkv2x")]
+position = Vector2(7787, 2461)
+target = NodePath("../../Player")
+
+[node name="Bystander25" parent="NPCs" node_paths=PackedStringArray("target") instance=ExtResource("14_jkv2x")]
+position = Vector2(3794, 2031)
+target = NodePath("../../Player")
+
+[node name="Bystander26" parent="NPCs" node_paths=PackedStringArray("target") instance=ExtResource("14_jkv2x")]
+position = Vector2(3973, 1994)
+target = NodePath("../../Player")
+
+[node name="Bystander27" parent="NPCs" node_paths=PackedStringArray("target") instance=ExtResource("14_jkv2x")]
+position = Vector2(3489, 932)
+target = NodePath("../../Player")
+
+[node name="Bystander28" parent="NPCs" node_paths=PackedStringArray("target") instance=ExtResource("14_jkv2x")]
+position = Vector2(3502, 3445)
+target = NodePath("../../Player")
+
+[node name="Bystander29" parent="NPCs" node_paths=PackedStringArray("target") instance=ExtResource("14_jkv2x")]
+position = Vector2(3652, 3433)
+target = NodePath("../../Player")
+
+[node name="Bystander30" parent="NPCs" node_paths=PackedStringArray("target") instance=ExtResource("14_jkv2x")]
+position = Vector2(3580, 3239)
+target = NodePath("../../Player")
+
+[node name="Bystander32" parent="NPCs" node_paths=PackedStringArray("target") instance=ExtResource("14_jkv2x")]
+position = Vector2(5702, 3425)
+target = NodePath("../../Player")
+
+[node name="Cop" parent="NPCs" node_paths=PackedStringArray("target") instance=ExtResource("16_xhfw6")]
+position = Vector2(1820, 2749)
+target = NodePath("../../Player")
+
+[node name="Cop2" parent="NPCs" node_paths=PackedStringArray("target") instance=ExtResource("16_xhfw6")]
+position = Vector2(2006, 2840)
+target = NodePath("../../Player")
+
+[node name="Cop3" parent="NPCs" node_paths=PackedStringArray("target") instance=ExtResource("16_xhfw6")]
+position = Vector2(5232, 2089)
+target = NodePath("../../Player")
+
+[node name="Cop4" parent="NPCs" node_paths=PackedStringArray("target") instance=ExtResource("16_xhfw6")]
+position = Vector2(4380, 764)
+target = NodePath("../../Player")
+
+[node name="Cop5" parent="NPCs" node_paths=PackedStringArray("target") instance=ExtResource("16_xhfw6")]
+position = Vector2(4207, 732)
+target = NodePath("../../Player")
+
+[node name="Bystander31" parent="NPCs" node_paths=PackedStringArray("target") instance=ExtResource("14_jkv2x")]
+position = Vector2(5778, 2219)
+target = NodePath("../../Player")
+
+[node name="Bystander33" parent="NPCs" node_paths=PackedStringArray("target") instance=ExtResource("14_jkv2x")]
+position = Vector2(2497, 1716)
+target = NodePath("../../Player")
+
+[node name="Bystander34" parent="NPCs" node_paths=PackedStringArray("target") instance=ExtResource("14_jkv2x")]
+position = Vector2(2728, 1682)
+target = NodePath("../../Player")
+
+[node name="Bystander35" parent="NPCs" node_paths=PackedStringArray("target") instance=ExtResource("14_jkv2x")]
+position = Vector2(2679, 1575)
+target = NodePath("../../Player")
+
+[node name="Bystander36" parent="NPCs" node_paths=PackedStringArray("target") instance=ExtResource("14_jkv2x")]
+position = Vector2(2633, 1773)
+target = NodePath("../../Player")
+
+[node name="Bystander37" parent="NPCs" node_paths=PackedStringArray("target") instance=ExtResource("14_jkv2x")]
+position = Vector2(5986, 1468)
+target = NodePath("../../Player")
+
+[node name="Bystander38" parent="NPCs" node_paths=PackedStringArray("target") instance=ExtResource("14_jkv2x")]
+position = Vector2(6032, 1487)
+target = NodePath("../../Player")
+
+[node name="Bystander39" parent="NPCs" node_paths=PackedStringArray("target") instance=ExtResource("14_jkv2x")]
+position = Vector2(5968, 1546)
+target = NodePath("../../Player")
+
+[node name="Bystander40" parent="NPCs" node_paths=PackedStringArray("target") instance=ExtResource("14_jkv2x")]
+position = Vector2(6161, 1565)
+target = NodePath("../../Player")
+
+[node name="Bystander41" parent="NPCs" node_paths=PackedStringArray("target") instance=ExtResource("14_jkv2x")]
+position = Vector2(7534, 3477)
+target = NodePath("../../Player")
+
+[node name="Bystander42" parent="NPCs" node_paths=PackedStringArray("target") instance=ExtResource("14_jkv2x")]
+position = Vector2(7608, 3558)
+target = NodePath("../../Player")
+
+[node name="Bystander43" parent="NPCs" node_paths=PackedStringArray("target") instance=ExtResource("14_jkv2x")]
+position = Vector2(7688, 3457)
+target = NodePath("../../Player")
+
+[node name="Bystander44" parent="NPCs" node_paths=PackedStringArray("target") instance=ExtResource("14_jkv2x")]
+position = Vector2(2986, 3511)
+target = NodePath("../../Player")
+
+[node name="Bystander45" parent="NPCs" node_paths=PackedStringArray("target") instance=ExtResource("14_jkv2x")]
+position = Vector2(2838, 3464)
+target = NodePath("../../Player")
+
+[node name="Bystander46" parent="NPCs" node_paths=PackedStringArray("target") instance=ExtResource("14_jkv2x")]
+position = Vector2(3544, 2475)
+target = NodePath("../../Player")
+
+[node name="Bystander47" parent="NPCs" node_paths=PackedStringArray("target") instance=ExtResource("14_jkv2x")]
+position = Vector2(3605, 2582)
+target = NodePath("../../Player")
+
+[node name="Bystander48" parent="NPCs" node_paths=PackedStringArray("target") instance=ExtResource("14_jkv2x")]
+position = Vector2(3706, 2919)
+target = NodePath("../../Player")
+
+[node name="Bystander49" parent="NPCs" node_paths=PackedStringArray("target") instance=ExtResource("14_jkv2x")]
+position = Vector2(3733, 2811)
+target = NodePath("../../Player")
+
+[node name="Bystander50" parent="NPCs" node_paths=PackedStringArray("target") instance=ExtResource("14_jkv2x")]
+position = Vector2(2703, 1102)
+target = NodePath("../../Player")
+
+[node name="Bystander51" parent="NPCs" node_paths=PackedStringArray("target") instance=ExtResource("14_jkv2x")]
+position = Vector2(2737, 1190)
+target = NodePath("../../Player")
+
+[node name="Bystander52" parent="NPCs" node_paths=PackedStringArray("target") instance=ExtResource("14_jkv2x")]
+position = Vector2(2831, 1123)
+target = NodePath("../../Player")
+
+[node name="Bystander53" parent="NPCs" node_paths=PackedStringArray("target") instance=ExtResource("14_jkv2x")]
+position = Vector2(5240, 2986)
+target = NodePath("../../Player")
+
+[node name="Bystander54" parent="NPCs" node_paths=PackedStringArray("target") instance=ExtResource("14_jkv2x")]
+position = Vector2(5405, 2996)
+target = NodePath("../../Player")
+
+[node name="Bystander55" parent="NPCs" node_paths=PackedStringArray("target") instance=ExtResource("14_jkv2x")]
+position = Vector2(5291, 2921)
+target = NodePath("../../Player")
+
+[node name="Bystander56" parent="NPCs" node_paths=PackedStringArray("target") instance=ExtResource("14_jkv2x")]
+position = Vector2(3032, 776)
+target = NodePath("../../Player")
+
+[node name="Bystander57" parent="NPCs" node_paths=PackedStringArray("target") instance=ExtResource("14_jkv2x")]
+position = Vector2(2912, 807)
+target = NodePath("../../Player")
+
+[node name="Bystander58" parent="NPCs" node_paths=PackedStringArray("target") instance=ExtResource("14_jkv2x")]
+position = Vector2(3612, 1206)
+target = NodePath("../../Player")
+
+[node name="Bystander59" parent="NPCs" node_paths=PackedStringArray("target") instance=ExtResource("14_jkv2x")]
+position = Vector2(1153, 1815)
+target = NodePath("../../Player")
+
+[node name="Bystander60" parent="NPCs" node_paths=PackedStringArray("target") instance=ExtResource("14_jkv2x")]
+position = Vector2(1273, 1794)
+target = NodePath("../../Player")
+
+[node name="Bystander61" parent="NPCs" node_paths=PackedStringArray("target") instance=ExtResource("14_jkv2x")]
+position = Vector2(7811, 3014)
 target = NodePath("../../Player")
 
 [node name="freeze_timer" type="Timer" parent="."]
@@ -3105,5 +3603,36 @@ stream = ExtResource("63_xhfw6")
 [node name="Score" type="Node" parent="."]
 script = ExtResource("64_od4ux")
 
+[node name="SpawnArea" type="Node2D" parent="."]
+script = ExtResource("68_y57op")
+type_police = ExtResource("16_xhfw6")
+type_military = ExtResource("17_1epgm")
+
+[node name="SpawnZone1" type="Area2D" parent="SpawnArea"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnArea/SpawnZone1"]
+position = Vector2(3154.5, 2155.75)
+shape = SubResource("RectangleShape2D_r4e17")
+
+[node name="SpawnZone2" type="Area2D" parent="SpawnArea"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnArea/SpawnZone2"]
+position = Vector2(4846, 1352)
+shape = SubResource("RectangleShape2D_y57op")
+
+[node name="SpawnZone3" type="Area2D" parent="SpawnArea"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnArea/SpawnZone3"]
+position = Vector2(5655, 3273.25)
+shape = SubResource("RectangleShape2D_mlv25")
+
+[node name="game_timer" type="Timer" parent="."]
+
+[node name="Military" parent="." node_paths=PackedStringArray("target") instance=ExtResource("17_1epgm")]
+position = Vector2(1912, 3166)
+target = NodePath("../Player")
+hp = 2000
+
 [connection signal="timeout" from="freeze_timer" to="." method="_on_freeze_timer_timeout"]
 [connection signal="timeout" from="pause_timer" to="." method="_on_pause_timer_timeout"]
+[connection signal="timeout" from="game_timer" to="." method="_on_game_timer_timeout"]

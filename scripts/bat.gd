@@ -5,6 +5,8 @@ const WEAPON_DISTANCE = 10.0
 var screen_size = Vector2(1280, 720)
 @export var damage: int = 1
 var can_atk = true
+@onready var is_ennemy = false
+@export var range = 64 * 1
 
 func _ready() -> void:
 	$CollisionShape2D.disabled = true
@@ -13,11 +15,20 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if !get_parent().get_parent().attacking:
 		var camera_position = position
-		var mouse_position = get_viewport().get_mouse_position()
-		var vec = mouse_position - Vector2(screen_size.x / 2, screen_size.y / 2)
+		var vec
+		if !is_ennemy:
+			var direction = get_viewport().get_mouse_position()
+			vec = direction - Vector2(screen_size.x / 2, screen_size.y / 2)
+		else:
+			var direction = get_node("/root/Main/Player").position
+			vec = direction - get_parent().get_parent().position
 		vec = vec.normalized() * WEAPON_DISTANCE
 		position = vec
 		rotation = vec.angle() + PI / 2
+		if is_ennemy:
+			collision_layer = 1 >> 4
+			collision_mask = 1 << 1
+			collision_mask = 1 >> 0
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("hittable"):

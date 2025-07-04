@@ -1,0 +1,119 @@
+[gd_scene load_steps=21 format=3 uid="uid://b1155ju0klbjp"]
+
+[ext_resource type="Script" uid="uid://bltgeffn0vlx4" path="res://scripts/military.gd" id="1_1ab63"]
+[ext_resource type="Texture2D" uid="uid://b7a07i5vmyiw7" path="res://assets/chara/death/smoke1.png" id="1_hyeyc"]
+[ext_resource type="Texture2D" uid="uid://c8y7q1xo4dig0" path="res://assets/chara/death/smoke2.png" id="2_db0co"]
+[ext_resource type="Texture2D" uid="uid://di24njm10vne0" path="res://assets/chara/death/smoke3.png" id="3_aq6hn"]
+[ext_resource type="Texture2D" uid="uid://cfdoou7n876eq" path="res://assets/chara/death/smoke4.png" id="4_aml6n"]
+[ext_resource type="Texture2D" uid="uid://b7865fyai7gl0" path="res://assets/chara/death/smoke5.png" id="5_5mtgt"]
+[ext_resource type="Texture2D" uid="uid://dwr0rpvvx82l" path="res://assets/chara/death/smoke6.png" id="6_leky2"]
+[ext_resource type="Texture2D" uid="uid://qd274a6fkfmy" path="res://assets/chara/death/smoke7.png" id="7_gr64k"]
+[ext_resource type="Texture2D" uid="uid://bie70enkhqbpa" path="res://assets/chara/death/smoke8.png" id="8_sdbg1"]
+[ext_resource type="Texture2D" uid="uid://f30owrc6h7rg" path="res://assets/chara/death/smoke9.png" id="9_1ab63"]
+[ext_resource type="Texture2D" uid="uid://ihe3fmud88sr" path="res://assets/chara/military/military1.png" id="10_5mtgt"]
+[ext_resource type="Texture2D" uid="uid://dnxj5rdfww3wg" path="res://assets/chara/military/military2.png" id="11_leky2"]
+[ext_resource type="Texture2D" uid="uid://dd21a22bt8jsw" path="res://assets/chara/military/military3.png" id="12_gr64k"]
+[ext_resource type="Texture2D" uid="uid://dg2bnxng386e2" path="res://assets/chara/military/military4.png" id="13_sdbg1"]
+[ext_resource type="PackedScene" uid="uid://bios1o00m404a" path="res://scenes/weapons/pistol.tscn" id="14_sdbg1"]
+[ext_resource type="PackedScene" uid="uid://jyrbd77wm23x" path="res://scenes/weapons/bat.tscn" id="15_1ab63"]
+[ext_resource type="PackedScene" uid="uid://dbgvdexw3ynve" path="res://scenes/weapons/rifle.tscn" id="16_gj6rm"]
+[ext_resource type="PackedScene" uid="uid://bwxdchabp1hmn" path="res://scenes/weapons/fists.tscn" id="18_gj6rm"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gj6rm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_hyeyc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_db0co")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_aq6hn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_aml6n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_5mtgt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_leky2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_gr64k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_sdbg1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_1ab63")
+}],
+"loop": false,
+"name": &"death",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_5mtgt")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_leky2")
+}],
+"loop": false,
+"name": &"shocked",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_gr64k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_sdbg1")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5mtgt"]
+size = Vector2(12, 16)
+
+[node name="Military" type="CharacterBody2D" groups=["hittable"]]
+texture_filter = 1
+scale = Vector2(4, 4)
+collision_layer = 2
+collision_mask = 12
+script = ExtResource("1_1ab63")
+kb_speed = 100.0
+hp = 100
+minimum_damages = 50
+status = "passive"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_gj6rm")
+animation = &"walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_5mtgt")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="WeaponManager" type="Node2D" parent="."]
+
+[node name="Pistol" parent="WeaponManager" instance=ExtResource("14_sdbg1")]
+
+[node name="Bat" parent="WeaponManager" instance=ExtResource("15_1ab63")]
+
+[node name="Rifle" parent="WeaponManager" instance=ExtResource("16_gj6rm")]
+
+[node name="Fists" parent="WeaponManager" instance=ExtResource("18_gj6rm")]
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

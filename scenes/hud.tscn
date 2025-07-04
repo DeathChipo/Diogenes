@@ -1,0 +1,83 @@
+[gd_scene load_steps=8 format=3 uid="uid://cxxjs8wesqsqn"]
+
+[ext_resource type="Script" uid="uid://q0c80gmvmqvq" path="res://scripts/hud.gd" id="1_6fi6k"]
+[ext_resource type="Texture2D" uid="uid://bglbmrexs2mug" path="res://assets/ui/healthbar/healthbar3.png" id="2_uo2fv"]
+[ext_resource type="Texture2D" uid="uid://bfjimhq85ybky" path="res://assets/ui/healthbar/healthbar2.png" id="3_047uy"]
+[ext_resource type="Texture2D" uid="uid://c8qdnu0on2bc3" path="res://assets/ui/healthbar/healthbar1.png" id="4_5pdws"]
+[ext_resource type="Texture2D" uid="uid://cuo4egw3p4e00" path="res://assets/ui/ragebar/ragebar1.png" id="5_047uy"]
+[ext_resource type="Texture2D" uid="uid://cqdgam5je5dga" path="res://assets/ui/ragebar/ragebar2.png" id="6_5pdws"]
+[ext_resource type="Texture2D" uid="uid://ckyi37v3blh58" path="res://assets/ui/star.png" id="7_5pdws"]
+
+[node name="HUD" type="CanvasLayer"]
+scale = Vector2(4, 4)
+transform = Transform2D(4, 0, 0, 4, 0, 0)
+script = ExtResource("1_6fi6k")
+
+[node name="score" type="Label" parent="."]
+offset_left = 63.25
+offset_top = 42.0
+offset_right = 111.25
+offset_bottom = 65.0
+text = "Score:"
+
+[node name="HealthBar" type="TextureProgressBar" parent="."]
+texture_filter = 1
+offset_left = 142.0
+offset_top = 142.0
+offset_right = 190.0
+offset_bottom = 190.0
+texture_under = ExtResource("2_uo2fv")
+texture_over = ExtResource("3_047uy")
+texture_progress = ExtResource("4_5pdws")
+
+[node name="Button" type="Button" parent="."]
+texture_filter = 1
+offset_left = 138.5
+offset_top = 70.0
+offset_right = 194.5
+offset_bottom = 101.0
+text = "Start"
+
+[node name="RageBar" type="TextureProgressBar" parent="."]
+texture_filter = 1
+offset_left = 269.75
+offset_top = 140.5
+offset_right = 317.75
+offset_bottom = 188.5
+texture_over = ExtResource("5_047uy")
+texture_progress = ExtResource("6_5pdws")
+
+[node name="star1" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(274.5, 152.75)
+texture = ExtResource("7_5pdws")
+
+[node name="star2" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(283.75, 152.75)
+texture = ExtResource("7_5pdws")
+
+[node name="star3" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(293, 152.75)
+texture = ExtResource("7_5pdws")
+
+[node name="star4" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(302.25, 152.75)
+texture = ExtResource("7_5pdws")
+
+[node name="star5" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(311.5, 152.75)
+texture = ExtResource("7_5pdws")
+
+[node name="GameOver" type="Label" parent="."]
+texture_filter = 1
+offset_left = 120.75
+offset_top = 12.0
+offset_right = 212.75
+offset_bottom = 35.0
+text = "GAME OVER"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

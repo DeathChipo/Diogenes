@@ -1,0 +1,116 @@
+[gd_scene load_steps=20 format=3 uid="uid://d4d45smujh745"]
+
+[ext_resource type="Script" uid="uid://bh7mat0fda0uc" path="res://scripts/cop.gd" id="1_5l0dd"]
+[ext_resource type="Texture2D" uid="uid://b7a07i5vmyiw7" path="res://assets/chara/death/smoke1.png" id="1_8otj7"]
+[ext_resource type="Texture2D" uid="uid://c8y7q1xo4dig0" path="res://assets/chara/death/smoke2.png" id="2_fghnw"]
+[ext_resource type="Texture2D" uid="uid://di24njm10vne0" path="res://assets/chara/death/smoke3.png" id="3_eleuq"]
+[ext_resource type="Texture2D" uid="uid://cfdoou7n876eq" path="res://assets/chara/death/smoke4.png" id="4_0o768"]
+[ext_resource type="Texture2D" uid="uid://b7865fyai7gl0" path="res://assets/chara/death/smoke5.png" id="5_5l0dd"]
+[ext_resource type="Texture2D" uid="uid://dwr0rpvvx82l" path="res://assets/chara/death/smoke6.png" id="6_7opti"]
+[ext_resource type="Texture2D" uid="uid://qd274a6fkfmy" path="res://assets/chara/death/smoke7.png" id="7_7spuv"]
+[ext_resource type="Texture2D" uid="uid://bie70enkhqbpa" path="res://assets/chara/death/smoke8.png" id="8_36dch"]
+[ext_resource type="Texture2D" uid="uid://f30owrc6h7rg" path="res://assets/chara/death/smoke9.png" id="9_2pgif"]
+[ext_resource type="Texture2D" uid="uid://cgfk5tionlev" path="res://assets/chara/cop/cop1.png" id="10_adetp"]
+[ext_resource type="Texture2D" uid="uid://ymm4hilwkoks" path="res://assets/chara/cop/cop2.png" id="11_d0mfv"]
+[ext_resource type="Texture2D" uid="uid://t1cya3s746ry" path="res://assets/chara/cop/cop3.png" id="12_0cqy5"]
+[ext_resource type="Texture2D" uid="uid://bjtneveder14b" path="res://assets/chara/cop/cop4.png" id="13_siisa"]
+[ext_resource type="PackedScene" uid="uid://bios1o00m404a" path="res://scenes/weapons/pistol.tscn" id="14_0o768"]
+[ext_resource type="PackedScene" uid="uid://jyrbd77wm23x" path="res://scenes/weapons/bat.tscn" id="15_5l0dd"]
+[ext_resource type="PackedScene" uid="uid://dbgvdexw3ynve" path="res://scenes/weapons/rifle.tscn" id="16_7opti"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cxis4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_8otj7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_fghnw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_eleuq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_0o768")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_5l0dd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_7opti")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_7spuv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_36dch")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_2pgif")
+}],
+"loop": false,
+"name": &"death",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_adetp")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_d0mfv")
+}],
+"loop": false,
+"name": &"shocked",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_0cqy5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_siisa")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8otj7"]
+size = Vector2(12, 15.25)
+
+[node name="Cop" type="CharacterBody2D" groups=["hittable"]]
+texture_filter = 1
+scale = Vector2(4, 4)
+collision_layer = 2
+collision_mask = 10
+script = ExtResource("1_5l0dd")
+hp = 150
+minimum_damages = 20
+status = "passive"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_cxis4")
+animation = &"shocked"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.375)
+shape = SubResource("RectangleShape2D_8otj7")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="WeaponManager" type="Node2D" parent="."]
+
+[node name="Pistol" parent="WeaponManager" instance=ExtResource("14_0o768")]
+
+[node name="Bat" parent="WeaponManager" instance=ExtResource("15_5l0dd")]
+
+[node name="Rifle" parent="WeaponManager" instance=ExtResource("16_7opti")]
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

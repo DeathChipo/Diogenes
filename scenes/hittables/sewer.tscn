@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://bad0dfntvh6ja"]
 
 [ext_resource type="Script" uid="uid://bh0mw6yhr451e" path="res://scripts/hittable.gd" id="1_y7k2t"]
-[ext_resource type="Texture2D" uid="uid://cp2a2tet8srlx" path="res://scripts/assets/hittables/sewer/sewer1.png" id="2_e3dnm"]
-[ext_resource type="Texture2D" uid="uid://c6hqkrw6bqfhl" path="res://scripts/assets/hittables/sewer/sewer2.png" id="2_j2vh3"]
+[ext_resource type="Texture2D" uid="uid://cp2a2tet8srlx" path="res://assets/hittables/sewer/sewer1.png" id="2_e3dnm"]
+[ext_resource type="Texture2D" uid="uid://c6hqkrw6bqfhl" path="res://assets/hittables/sewer/sewer2.png" id="2_j2vh3"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_y7k2t"]
 animations = [{
@@ -32,6 +32,7 @@ scale = Vector2(4, 4)
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_y7k2t")
+hp = 5
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_y7k2t")

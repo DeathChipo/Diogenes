@@ -80,3 +80,4 @@ change_music={
 2d_physics/layer_2="hittable"
 2d_physics/layer_3="weapon"
 2d_physics/layer_4="wall"
+2d_physics/layer_5="hurt_box"

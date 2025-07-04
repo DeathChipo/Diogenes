@@ -1,12 +1,12 @@
 [gd_scene load_steps=10 format=3 uid="uid://dbgvdexw3ynve"]
 
 [ext_resource type="Script" uid="uid://chu1sp3jcepf" path="res://scripts/rifle.gd" id="1_6kub0"]
-[ext_resource type="Texture2D" uid="uid://m7wd6ty8wpdk" path="res://scripts/assets/weapons/rifle/rifle.png" id="1_hkhc6"]
-[ext_resource type="Texture2D" uid="uid://c4shpiq4bqbw7" path="res://scripts/assets/weapons/rifle/explosion1.png" id="3_s04ql"]
+[ext_resource type="Texture2D" uid="uid://m7wd6ty8wpdk" path="res://assets/weapons/rifle/rifle.png" id="1_hkhc6"]
+[ext_resource type="Texture2D" uid="uid://c4shpiq4bqbw7" path="res://assets/weapons/rifle/explosion1.png" id="3_s04ql"]
 [ext_resource type="PackedScene" uid="uid://bvtrjqibbd00i" path="res://scenes/weapons/bullet.tscn" id="3_yjk07"]
-[ext_resource type="Texture2D" uid="uid://i7bmkt3ytipd" path="res://scripts/assets/weapons/rifle/explosion2.png" id="4_yjk07"]
-[ext_resource type="Texture2D" uid="uid://b17nq1i07jjqa" path="res://scripts/assets/weapons/rifle/explosion3.png" id="5_k631g"]
-[ext_resource type="Texture2D" uid="uid://c02gsbnf5i0dw" path="res://scripts/assets/weapons/rifle/explosion4.png" id="6_qn60d"]
+[ext_resource type="Texture2D" uid="uid://i7bmkt3ytipd" path="res://assets/weapons/rifle/explosion2.png" id="4_yjk07"]
+[ext_resource type="Texture2D" uid="uid://b17nq1i07jjqa" path="res://assets/weapons/rifle/explosion3.png" id="5_k631g"]
+[ext_resource type="Texture2D" uid="uid://c02gsbnf5i0dw" path="res://assets/weapons/rifle/explosion4.png" id="6_qn60d"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sg1yr"]
 animations = [{
@@ -44,6 +44,7 @@ texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_sg1yr")
 animation = &"atk"
 script = ExtResource("1_6kub0")
+damage = 15
 bullet_scene = ExtResource("3_yjk07")
 
 [node name="GunShot" type="AnimatedSprite2D" parent="."]

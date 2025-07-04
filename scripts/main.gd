@@ -1,11 +1,21 @@
 extends Node2D
 
+var game_speed: int = 0
+var menu = true
 var freeze = false
 var last_hit = false
 var screen_size = Vector2i(1280, 720)
 @export var max_offset_distance: float = 100.0
+var first_blood = false
+
+func _ready():
+	get_node("/root/Main/game_timer").wait_time = 5
+	get_node("/root/Main/game_timer").one_shot = false
+	get_node("/root/Main/game_timer").start()
 
 func get_camera_pos() -> Vector2:
+	if menu:
+		return $Player.position
 	var camera_position = $Player.position
 	var mouse_position = get_viewport().get_mouse_position()
 	var vec = mouse_position - Vector2(screen_size.x / 2, screen_size.y / 2)
@@ -43,4 +53,13 @@ func _on_freeze_timer_timeout() -> void:
 
 
 func _on_pause_timer_timeout() -> void:
-	pause_animations()
+	pass
+	
+func start_game():
+	menu = false
+
+func _on_game_timer_timeout() -> void:
+	if (menu):
+		return
+	game_speed += 1
+	print("THE GAME SPEED IS :", game_speed)

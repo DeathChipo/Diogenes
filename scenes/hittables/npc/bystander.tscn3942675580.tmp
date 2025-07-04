@@ -1,0 +1,117 @@
+[gd_scene load_steps=21 format=3 uid="uid://dnd5xd55eju2m"]
+
+[ext_resource type="Script" uid="uid://b1y3ugl1eqfh2" path="res://scripts/npc.gd" id="1_lqpp4"]
+[ext_resource type="Texture2D" uid="uid://kqd1nq8kipts" path="res://assets/chara/bystander/bystander1.png" id="2_4003b"]
+[ext_resource type="Texture2D" uid="uid://b7a07i5vmyiw7" path="res://assets/chara/death/smoke1.png" id="2_r2htw"]
+[ext_resource type="Texture2D" uid="uid://c8y7q1xo4dig0" path="res://assets/chara/death/smoke2.png" id="3_rpkue"]
+[ext_resource type="Texture2D" uid="uid://j5jq05jqcp3e" path="res://assets/chara/bystander/bystander2.png" id="3_x71rs"]
+[ext_resource type="Texture2D" uid="uid://c1q4uucjsybl6" path="res://assets/chara/bystander/bystander3.png" id="4_d6h26"]
+[ext_resource type="Texture2D" uid="uid://di24njm10vne0" path="res://assets/chara/death/smoke3.png" id="4_q44jb"]
+[ext_resource type="Texture2D" uid="uid://cfdoou7n876eq" path="res://assets/chara/death/smoke4.png" id="5_483rw"]
+[ext_resource type="Texture2D" uid="uid://bb67yj386m6ul" path="res://assets/chara/bystander/bystander4.png" id="5_kxdqp"]
+[ext_resource type="Texture2D" uid="uid://b7865fyai7gl0" path="res://assets/chara/death/smoke5.png" id="6_lmnk2"]
+[ext_resource type="Texture2D" uid="uid://dwr0rpvvx82l" path="res://assets/chara/death/smoke6.png" id="7_huksc"]
+[ext_resource type="Texture2D" uid="uid://qd274a6fkfmy" path="res://assets/chara/death/smoke7.png" id="8_aei3e"]
+[ext_resource type="Texture2D" uid="uid://bie70enkhqbpa" path="res://assets/chara/death/smoke8.png" id="9_veg1b"]
+[ext_resource type="Texture2D" uid="uid://f30owrc6h7rg" path="res://assets/chara/death/smoke9.png" id="10_scu0j"]
+[ext_resource type="PackedScene" uid="uid://bios1o00m404a" path="res://scenes/weapons/pistol.tscn" id="15_483rw"]
+[ext_resource type="PackedScene" uid="uid://jyrbd77wm23x" path="res://scenes/weapons/bat.tscn" id="16_lmnk2"]
+[ext_resource type="PackedScene" uid="uid://dbgvdexw3ynve" path="res://scenes/weapons/rifle.tscn" id="17_huksc"]
+[ext_resource type="PackedScene" uid="uid://bwxdchabp1hmn" path="res://scenes/weapons/fists.tscn" id="18_lmnk2"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lqpp4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_r2htw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_rpkue")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_q44jb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_483rw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_lmnk2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_huksc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_aei3e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_veg1b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_scu0j")
+}],
+"loop": false,
+"name": &"death",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_4003b")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_x71rs")
+}],
+"loop": false,
+"name": &"shoked",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_d6h26")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_kxdqp")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x71rs"]
+size = Vector2(11.75, 14)
+
+[node name="Bystander" type="CharacterBody2D" groups=["hittable"]]
+texture_filter = 1
+scale = Vector2(4, 4)
+collision_layer = 2
+collision_mask = 12
+script = ExtResource("1_lqpp4")
+status = "passive"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_lqpp4")
+animation = &"shoked"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.125, 1)
+shape = SubResource("RectangleShape2D_x71rs")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 1.0
+path_postprocessing = 1
+
+[node name="WeaponManager" type="Node2D" parent="."]
+
+[node name="Pistol" parent="WeaponManager" instance=ExtResource("15_483rw")]
+
+[node name="Bat" parent="WeaponManager" instance=ExtResource("16_lmnk2")]
+
+[node name="Rifle" parent="WeaponManager" instance=ExtResource("17_huksc")]
+
+[node name="Fists" parent="WeaponManager" instance=ExtResource("18_lmnk2")]
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

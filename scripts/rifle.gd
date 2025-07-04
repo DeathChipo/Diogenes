@@ -6,7 +6,9 @@ var screen_size = Vector2(1280, 720)
 @export var damage: int = 1
 @export var bullet_scene: PackedScene
 var can_atk = true
-@export var bullet_speed = 8000
+@export var bullet_speed = 4000
+@export var range = 64 * 8
+@onready var is_ennemy = false
 
 func _ready() -> void:
 	hide()
@@ -15,8 +17,13 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if !get_parent().get_parent().attacking:
 		var camera_position = position
-		var mouse_position = get_viewport().get_mouse_position()
-		var vec = mouse_position - Vector2(screen_size.x / 2, screen_size.y / 2)
+		var vec
+		if !is_ennemy:
+			var direction = get_viewport().get_mouse_position()
+			vec = direction - Vector2(screen_size.x / 2, screen_size.y / 2)
+		else:
+			var direction = get_node("/root/Main/Player").position
+			vec = direction - get_parent().get_parent().position
 		vec = vec.normalized() * WEAPON_DISTANCE
 		position = vec
 		rotation = vec.angle()
@@ -38,7 +45,7 @@ func atk():
 	$AtkTimer.start()
 	$GunShot.play()
 	var bullet = bullet_scene.instantiate()
-	bullet.get_stats(rotation, bullet_speed, damage, get_parent().get_parent().position + position)
+	bullet.get_stats(rotation, bullet_speed, damage, get_parent().get_parent().position + position, is_ennemy)
 	get_node("/root/Main/Player/WeaponManager/Bullets").add_child(bullet)
 	get_node("/root/Main/SoundManager/sfx/MkShoot1").play()
 
