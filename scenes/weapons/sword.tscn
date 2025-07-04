@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://dxlg6xsojsec"]
 
 [ext_resource type="Script" uid="uid://d26ivr4iagkuu" path="res://scripts/sword.gd" id="1_11jj1"]
-[ext_resource type="Texture2D" uid="uid://j46evrg5bij7" path="res://assets/weapons/sword/sword1.png" id="2_11jj1"]
-[ext_resource type="Texture2D" uid="uid://dtrxt8es153sh" path="res://assets/weapons/sword/sword2.png" id="3_dx2j5"]
-[ext_resource type="Texture2D" uid="uid://c5umckab5qxco" path="res://assets/weapons/sword/sword3.png" id="4_xs7jb"]
-[ext_resource type="Texture2D" uid="uid://b5l7t533d3ip2" path="res://assets/weapons/sword/sword4.png" id="5_w46s4"]
+[ext_resource type="Texture2D" uid="uid://j46evrg5bij7" path="res://scripts/assets/weapons/sword/sword1.png" id="2_11jj1"]
+[ext_resource type="Texture2D" uid="uid://dtrxt8es153sh" path="res://scripts/assets/weapons/sword/sword2.png" id="3_dx2j5"]
+[ext_resource type="Texture2D" uid="uid://c5umckab5qxco" path="res://scripts/assets/weapons/sword/sword3.png" id="4_xs7jb"]
+[ext_resource type="Texture2D" uid="uid://b5l7t533d3ip2" path="res://scripts/assets/weapons/sword/sword4.png" id="5_w46s4"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lax51"]
 animations = [{

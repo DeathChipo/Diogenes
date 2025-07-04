@@ -1,15 +1,15 @@
-[gd_scene load_steps=98 format=4 uid="uid://cn7sdlh8ij3je"]
+[gd_scene load_steps=99 format=4 uid="uid://cn7sdlh8ij3je"]
 
 [ext_resource type="PackedScene" uid="uid://b1qirx5k5tv3l" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://dkwtmkyr58yu8" path="res://scripts/main.gd" id="1_sugp2"]
-[ext_resource type="Texture2D" uid="uid://xnmyor037ldc" path="res://assets/tiles/tilemap.png" id="2_tefeu"]
-[ext_resource type="Texture2D" uid="uid://dtpbxkcmp7swk" path="res://assets/tiles/42.png" id="3_o6xl0"]
+[ext_resource type="Texture2D" uid="uid://xnmyor037ldc" path="res://scripts/assets/tiles/tilemap.png" id="2_tefeu"]
+[ext_resource type="Texture2D" uid="uid://dtpbxkcmp7swk" path="res://scripts/assets/tiles/42.png" id="3_o6xl0"]
 [ext_resource type="Script" uid="uid://cy2djd6xstj2q" path="res://scripts/camera.gd" id="4_jyhfs"]
-[ext_resource type="Texture2D" uid="uid://do5xtfwskutde" path="res://assets/tiles/beer.png" id="4_tipki"]
-[ext_resource type="Texture2D" uid="uid://4jwgi4xn1n26" path="res://assets/tiles/police.png" id="5_85g3d"]
+[ext_resource type="Texture2D" uid="uid://do5xtfwskutde" path="res://scripts/assets/tiles/beer.png" id="4_tipki"]
+[ext_resource type="Texture2D" uid="uid://4jwgi4xn1n26" path="res://scripts/assets/tiles/police.png" id="5_85g3d"]
 [ext_resource type="PackedScene" uid="uid://6ogq6q3581cs" path="res://scenes/hittables/trashcan.tscn" id="5_tbgi4"]
-[ext_resource type="Texture2D" uid="uid://c4xqvkpwf4xdf" path="res://assets/tiles/pillar.png" id="6_choun"]
-[ext_resource type="Texture2D" uid="uid://bmesgevx6rws0" path="res://assets/tiles/bank.png" id="7_ya4ey"]
+[ext_resource type="Texture2D" uid="uid://c4xqvkpwf4xdf" path="res://scripts/assets/tiles/pillar.png" id="6_choun"]
+[ext_resource type="Texture2D" uid="uid://bmesgevx6rws0" path="res://scripts/assets/tiles/bank.png" id="7_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://diwi0ribi804m" path="res://scenes/hittables/trash.tscn" id="11_eb6dy"]
 [ext_resource type="PackedScene" uid="uid://bywf3ai7abn2n" path="res://scenes/hittables/trashcan_2.tscn" id="12_eb6dy"]
 [ext_resource type="PackedScene" uid="uid://bnh5xmuy0trkf" path="res://scenes/hittables/cone.tscn" id="12_trceg"]
@@ -63,6 +63,7 @@
 [ext_resource type="AudioStream" uid="uid://cegl3voaufow" path="res://sound/music/pre cut/transi1.mp3" id="61_ro3en"]
 [ext_resource type="AudioStream" uid="uid://bnaroih2fxyxc" path="res://sound/music/pre cut/transi2.mp3" id="62_od4ux"]
 [ext_resource type="AudioStream" uid="uid://bxlr0jgy0f3jp" path="res://sound/music/pre cut/transi3.mp3" id="63_xhfw6"]
+[ext_resource type="Script" uid="uid://m30pnyi5q13k" path="res://scripts/score.gd" id="64_od4ux"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_5q0nq"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
@@ -3045,6 +3046,9 @@ stream = ExtResource("62_od4ux")
 
 [node name="transi3" type="AudioStreamPlayer" parent="SoundManager/PreCut"]
 stream = ExtResource("63_xhfw6")
+
+[node name="Score" type="Node" parent="."]
+script = ExtResource("64_od4ux")
 
 [connection signal="timeout" from="freeze_timer" to="." method="_on_freeze_timer_timeout"]
 [connection signal="timeout" from="pause_timer" to="." method="_on_pause_timer_timeout"]

@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://6ogq6q3581cs"]
 
 [ext_resource type="Script" uid="uid://bh0mw6yhr451e" path="res://scripts/hittable.gd" id="1_1btkc"]
-[ext_resource type="Texture2D" uid="uid://bmvjfmtw3nhlp" path="res://assets/hittables/trashcan/trashcan2.png" id="2_fecxa"]
-[ext_resource type="Texture2D" uid="uid://b2xgkmkimlqkw" path="res://assets/hittables/trashcan/trashcan1.png" id="3_jmy6w"]
+[ext_resource type="Texture2D" uid="uid://bmvjfmtw3nhlp" path="res://scripts/assets/hittables/trashcan/trashcan2.png" id="2_fecxa"]
+[ext_resource type="Texture2D" uid="uid://b2xgkmkimlqkw" path="res://scripts/assets/hittables/trashcan/trashcan1.png" id="3_jmy6w"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jmhqc"]
 animations = [{
