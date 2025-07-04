@@ -2831,3 +2831,10 @@ script = ExtResource("4_jyhfs")
 [node name="Bystander" parent="NPCs" node_paths=PackedStringArray("target") instance=ExtResource("14_jkv2x")]
 position = Vector2(7509, 2974)
 target = NodePath("../../Player")
+
+[node name="freeze_timer" type="Timer" parent="."]
+
+[node name="pause_timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="freeze_timer" to="." method="_on_freeze_timer_timeout"]
+[connection signal="timeout" from="pause_timer" to="." method="_on_pause_timer_timeout"]

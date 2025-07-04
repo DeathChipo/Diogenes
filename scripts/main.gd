@@ -39,6 +39,10 @@ func unpause_animations(node: Node = null):
 		else:
 			unpause_animations(child)
 
-func _on_timer_timeout() -> void:
+func _on_freeze_timer_timeout() -> void:
 	freeze = false
 	unpause_animations()
+
+
+func _on_pause_timer_timeout() -> void:
+	pause_animations()
