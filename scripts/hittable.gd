@@ -48,7 +48,7 @@ func hit(dmg: int):
 			#get_node("/root/Main/pause_timer").wait_time = 0.1
 			#get_node("/root/Main/pause_timer").one_shot = true
 			#get_node("/root/Main/pause_timer").start()
-			get_node("/root/Main/Camera").start_shake(4, 15, 4)
+			get_node("/root/Main/Camera").start_shake(2, 3, 2)
 			get_node("/root/Main/freeze_timer").wait_time = 0.1
 			get_node("/root/Main/freeze_timer").one_shot = true
 			get_node("/root/Main/freeze_timer").start()
@@ -63,7 +63,7 @@ func hit(dmg: int):
 			$AnimatedSprite2D.animation = "death"
 			$AnimatedSprite2D.play()
 			get_node("/root/Main").freeze = true
-			get_node("/root/Main/Camera").start_shake(7, 10, 10)
+			get_node("/root/Main/Camera").start_shake(4, 4, 4)
 			get_node("/root/Main/Score").add_assault(name.substr(0, 3))
 			if !last_hit:
 				get_node("/root/Main/freeze_timer").wait_time = 0.2

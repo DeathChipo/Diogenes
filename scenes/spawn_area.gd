@@ -4,6 +4,7 @@ extends Node
 @export var type_military: PackedScene
 
 var mob_cap: int = 0
+var spawn = [[4740,1255],[4750,1250],[4740,1240],[4730,1200],[4754,1100]]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -11,19 +12,18 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if get_node("/root/Main").game_speed >= 1 && mob_cap <= 10:
+	if get_node("/root/Main").game_speed >= 2 && mob_cap <= 2:
 		spawn_mob()
-	elif get_node("/root/Main").game_speed >= 5 && mob_cap <= 30:
+	elif get_node("/root/Main").game_speed >= 5 && mob_cap <= 5:
 		spawn_mob()
-	elif get_node("/root/Main").game_speed >= 10 && mob_cap <= 50:
+	elif get_node("/root/Main").game_speed >= 10 && mob_cap <= 15:
 		spawn_mob()
-	elif get_node("/root/Main").game_speed >= 15 && mob_cap <= 80:
+	elif get_node("/root/Main").game_speed >= 15 && mob_cap <= 40:
 		spawn_mob()
-	elif get_node("/root/Main").game_speed >= 20 && mob_cap <= 150:
+	elif get_node("/root/Main").game_speed >= 20 && mob_cap <= 80:
 		spawn_mob()
 
 func spawn_mob():
-	print("NWEOHWEGHWEUIGWERHIW0OERHOWERHO")
 	var area
 	var i = randi() % 3
 	if (i == 0):
@@ -34,8 +34,9 @@ func spawn_mob():
 		area = $SpawnZone3
 	var level = get_node("/root/Main/Score").player_level
 	var pos: Vector2
-	pos.x = 4750
-	pos.y = 1250
+	var randib = randi() % 3;
+	pos.x = spawn[randib][0]
+	pos.y = spawn[randib][1]
 	print(pos)
 	var police_nb = randi() % (60 - (level * 10))
 	var military_nb = randi() % (0 + (level * 10))

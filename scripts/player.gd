@@ -47,7 +47,7 @@ func _physics_process(delta) -> void:
 	move_and_slide()
 
 func hit(dmg):
-	print("OUCH")
+	get_node("/root/Main/SoundManager/sfx/Damage1").play()
 	hp -= dmg
 
 func check_witnesses():

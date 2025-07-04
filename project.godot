@@ -13,7 +13,7 @@ config_version=5
 config/name="hors cadre"
 run/main_scene="uid://cn7sdlh8ij3je"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://c5acn2r760jp1"
 
 [display]
 
