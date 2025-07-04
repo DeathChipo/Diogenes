@@ -1,4 +1,4 @@
-[gd_scene load_steps=103 format=4 uid="uid://cn7sdlh8ij3je"]
+[gd_scene load_steps=104 format=4 uid="uid://cn7sdlh8ij3je"]
 
 [ext_resource type="PackedScene" uid="uid://b1qirx5k5tv3l" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://dkwtmkyr58yu8" path="res://scripts/main.gd" id="1_sugp2"]
@@ -67,6 +67,7 @@
 [ext_resource type="AudioStream" uid="uid://bnaroih2fxyxc" path="res://sound/music/pre cut/transi2.mp3" id="62_od4ux"]
 [ext_resource type="AudioStream" uid="uid://ie1oi1ygstmp" path="res://sound/sfx/Button3.wav" id="63_a82wo"]
 [ext_resource type="AudioStream" uid="uid://bxlr0jgy0f3jp" path="res://sound/music/pre cut/transi3.mp3" id="63_xhfw6"]
+[ext_resource type="AudioStream" uid="uid://cfsksgjv00ojf" path="res://sound/sfx/StreetSoundscape.mp3" id="64_mlv25"]
 [ext_resource type="Script" uid="uid://m30pnyi5q13k" path="res://scripts/score.gd" id="64_od4ux"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_5q0nq"]
@@ -2936,121 +2937,159 @@ stream = ExtResource("26_r4e17")
 
 [node name="BatonHit1" type="AudioStreamPlayer" parent="SoundManager/sfx"]
 stream = ExtResource("27_y57op")
+volume_db = -15.0
 
 [node name="BatonHit2" type="AudioStreamPlayer" parent="SoundManager/sfx"]
 stream = ExtResource("28_mlv25")
+volume_db = -15.0
 
 [node name="BatonHit3" type="AudioStreamPlayer" parent="SoundManager/sfx"]
 stream = ExtResource("29_a82wo")
+volume_db = -15.0
 
 [node name="BazoShoot1" type="AudioStreamPlayer" parent="SoundManager/sfx"]
 stream = ExtResource("30_gdvew")
+volume_db = -15.0
 
 [node name="Explode1" type="AudioStreamPlayer" parent="SoundManager/sfx"]
 stream = ExtResource("31_kjtvk")
+volume_db = -15.0
 
 [node name="Explode2" type="AudioStreamPlayer" parent="SoundManager/sfx"]
 stream = ExtResource("32_xrs0c")
+volume_db = -15.0
 
 [node name="Explode3" type="AudioStreamPlayer" parent="SoundManager/sfx"]
 stream = ExtResource("33_xljpf")
+volume_db = -15.0
 
 [node name="GunShoot1" type="AudioStreamPlayer" parent="SoundManager/sfx"]
 stream = ExtResource("34_j4bwh")
+volume_db = -15.0
 
 [node name="GunShoot2" type="AudioStreamPlayer" parent="SoundManager/sfx"]
 stream = ExtResource("35_ksmap")
+volume_db = -15.0
 
 [node name="HitFail1" type="AudioStreamPlayer" parent="SoundManager/sfx"]
 stream = ExtResource("36_ygd8o")
-volume_db = -9.369
+volume_db = -20.0
 
 [node name="HitFail2" type="AudioStreamPlayer" parent="SoundManager/sfx"]
 stream = ExtResource("37_2s0kr")
-volume_db = -8.432
+volume_db = -20.0
 
 [node name="HitFail3" type="AudioStreamPlayer" parent="SoundManager/sfx"]
 stream = ExtResource("38_xaipn")
-volume_db = -9.369
+volume_db = -20.0
 
 [node name="HitFail4" type="AudioStreamPlayer" parent="SoundManager/sfx"]
 stream = ExtResource("39_ndrjj")
-volume_db = -10.557
+volume_db = -20.0
 
 [node name="MkShoot1" type="AudioStreamPlayer" parent="SoundManager/sfx"]
 stream = ExtResource("40_ih3m7")
+volume_db = -15.0
 
 [node name="PipeHit1" type="AudioStreamPlayer" parent="SoundManager/sfx"]
 stream = ExtResource("41_11yus")
+volume_db = -15.0
 
 [node name="PipeHit2" type="AudioStreamPlayer" parent="SoundManager/sfx"]
 stream = ExtResource("42_b6ruc")
+volume_db = -15.0
 
 [node name="PipeHit3" type="AudioStreamPlayer" parent="SoundManager/sfx"]
 stream = ExtResource("43_155or")
+volume_db = -15.0
 
 [node name="Punch1" type="AudioStreamPlayer" parent="SoundManager/sfx"]
 stream = ExtResource("44_vtx2l")
+volume_db = -15.0
 
 [node name="Punch2" type="AudioStreamPlayer" parent="SoundManager/sfx"]
 stream = ExtResource("45_63lxy")
+volume_db = -15.0
 
 [node name="Punch3" type="AudioStreamPlayer" parent="SoundManager/sfx"]
 stream = ExtResource("46_fjhjs")
+volume_db = -15.0
 
 [node name="scream1" type="AudioStreamPlayer" parent="SoundManager/sfx"]
 stream = ExtResource("47_bfu41")
+volume_db = -15.0
 
 [node name="scream2" type="AudioStreamPlayer" parent="SoundManager/sfx"]
 stream = ExtResource("48_r4ag1")
+volume_db = -15.0
 
 [node name="scream3" type="AudioStreamPlayer" parent="SoundManager/sfx"]
 stream = ExtResource("49_v0wtd")
+volume_db = -15.0
 
 [node name="ShootFail1" type="AudioStreamPlayer" parent="SoundManager/sfx"]
 stream = ExtResource("50_sgvw8")
+volume_db = -20.0
 
 [node name="ShootFail2" type="AudioStreamPlayer" parent="SoundManager/sfx"]
 stream = ExtResource("51_6nfnn")
+volume_db = -20.0
 
 [node name="ShootFail3" type="AudioStreamPlayer" parent="SoundManager/sfx"]
 stream = ExtResource("52_4ue30")
+volume_db = -20.0
 
 [node name="ShootFail4" type="AudioStreamPlayer" parent="SoundManager/sfx"]
 stream = ExtResource("53_k42av")
+volume_db = -20.0
 
 [node name="ShootFail5" type="AudioStreamPlayer" parent="SoundManager/sfx"]
 stream = ExtResource("54_gr8w0")
+volume_db = -20.0
 
 [node name="SwordHit1" type="AudioStreamPlayer" parent="SoundManager/sfx"]
 stream = ExtResource("55_673bd")
+volume_db = -15.0
 
 [node name="SwordHit2" type="AudioStreamPlayer" parent="SoundManager/sfx"]
 stream = ExtResource("56_akjxb")
+volume_db = -15.0
 
 [node name="SwordHit3" type="AudioStreamPlayer" parent="SoundManager/sfx"]
 stream = ExtResource("57_vrx01")
+volume_db = -15.0
 
 [node name="Hit1" type="AudioStreamPlayer" parent="SoundManager/sfx"]
 stream = ExtResource("58_kf5aa")
+volume_db = -15.0
 
 [node name="Hit2" type="AudioStreamPlayer" parent="SoundManager/sfx"]
 stream = ExtResource("59_t5ykj")
+volume_db = -15.0
 
 [node name="Damage1" type="AudioStreamPlayer" parent="SoundManager/sfx"]
 stream = ExtResource("60_r4e17")
+volume_db = -15.0
 
 [node name="Button1" type="AudioStreamPlayer" parent="SoundManager/sfx"]
 stream = ExtResource("61_y57op")
+volume_db = -15.0
 
 [node name="Button2" type="AudioStreamPlayer" parent="SoundManager/sfx"]
 stream = ExtResource("62_mlv25")
+volume_db = -15.0
 
 [node name="Button3" type="AudioStreamPlayer" parent="SoundManager/sfx"]
 stream = ExtResource("63_a82wo")
+volume_db = -15.0
+
+[node name="StreetSoundscape" type="AudioStreamPlayer" parent="SoundManager/sfx"]
+stream = ExtResource("64_mlv25")
+volume_db = -30.0
 
 [node name="Intro" type="AudioStreamPlayer" parent="SoundManager"]
 stream = ExtResource("58_1uevf")
+volume_db = 5.0
 
 [node name="PreCut" type="Node2D" parent="SoundManager"]
 

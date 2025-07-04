@@ -40,6 +40,7 @@ func _ready():
 	[$Loop4/Loop4Raw, $Loop4/Loop4transi, $Loop5/Loop5Raw],
 	[$Loop5/Loop5Raw, $Loop5/Loop5transi, $Loop5/Loop5Raw],
 			]
+	$sfx/StreetSoundscape.play()
 
 func randSound(str, nb):
 	var r = randi() % nb + 1
@@ -117,7 +118,7 @@ func transition():
 		
 	if transi_cut == true && bar == transi_bar && beat == 3:
 		loop[level][0].volume_db = -80.0
-		loop[level][1].volume_db = 10.0
+		loop[level][1].volume_db = 5.0
 		transi_cut = false
 		transi_reprise = true
 	var tmp = transi_bar + 1
@@ -125,7 +126,7 @@ func transition():
 		tmp = 1
 	if transi_reprise == true && bar == tmp:
 		loop[level][1].volume_db = -80.0
-		loop[level][2].volume_db = 10.0
+		loop[level][2].volume_db = 5.0
 		level += 1
 		if level == 5:
 			level = 4
@@ -137,9 +138,10 @@ func loop_transi():
 	if (bar_counter % 16 == 1 && loop_reset == true):
 		stop_all_music()
 		play_all_music()
-		loop[level][0].volume_db = 10.0
+		loop[level][0].volume_db = 5.0
 		loop_reset = false
-		print("testtttttttt")
+		$sfx/StreetSoundscape.stop()
+		$sfx/StreetSoundscape.play()
 	elif loop_reset	== false && bar_counter % 16 == 10:
 		loop_reset = true
 
@@ -149,8 +151,6 @@ func	update_bar(time):
 		bar_counter += 1
 		if (bar == 5):
 			bar = 1
-		print("\n")
-		print(bar)
 		bar_hit = true
 	elif fmod(time, 60/float(115)*4) > 1 && bar_hit == true:
 		bar_hit = false
@@ -160,7 +160,6 @@ func	update_beat(time):
 		beat += 1
 		if (beat == 5):
 			beat = 1
-		print(beat)
 		beat_hit = true
 	elif fmod(time, 60/float(115)) > 0.4 && beat_hit == true:
 		beat_hit = false
